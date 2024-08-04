@@ -1,0 +1,26 @@
+[project]
+name = "webpro-data-model"
+version = "0.0.1"
+description = "WEBPRO Data Model"
+authors = [
+    { name = "Shoji, Yutaka", email = "ytk.shoji@gmail.com" }
+]
+dependencies = [
+    "pydantic>=2.8.2",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/webpro_data_model"]
