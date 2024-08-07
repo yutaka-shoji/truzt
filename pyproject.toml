@@ -17,7 +17,9 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = []
+dev-dependencies = [
+    "datamodel-code-generator>=0.25.9",
+]
 
 [tool.hatch.metadata]
 allow-direct-references = true
