@@ -1,3 +1,9 @@
-# [WIP] webpro-data-model
+# \[WIP\] truzt
 
-WEBPRO Data Model using [Pydantic](https://docs.pydantic.dev/latest/).
+[Builelib](https://github.com/MasatoMiyata/builelib)-compatible Data Model using [Pydantic](https://docs.pydantic.dev/latest/).
+
+## Data Validation
+
+## Serialization
+
+## Convert excel to json
