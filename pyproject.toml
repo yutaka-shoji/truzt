@@ -18,14 +18,17 @@ build-backend = "hatchling.build"
 [tool.rye]
 managed = true
 dev-dependencies = [
-    "datamodel-code-generator>=0.25.9",
+    "ruff>=0.5.7",
+    "pyright>=1.1.375",
+    "pre-commit>=3.8.0",
+    "pylint>=3.2.6",
     "pytest>=8.3.2",
+    "datamodel-code-generator>=0.25.9",
     "mkdocstrings[python]>=0.25.2",
     "mkdocs-material>=9.5.31",
     "mkdocs-gen-files>=0.5.0",
     "mkdocs-literate-nav>=0.6.1",
     "mkdocs-section-index>=0.3.9",
-    "pylint>=3.2.6",
 ]
 
 [tool.hatch.metadata]
@@ -33,3 +36,36 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/truzt"]
+
+# ----------ruff linter/formatter----------
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    'F',      # Pyflakes
+    'E',      # pycodestyle (Error)
+    'W',      # pycodestyle (Warning)
+    'C90',    # mccabe
+    'I',      # isort
+    'N',      # pep8-naming
+    'D',      # pydocstyle
+    'UP',     # pyupgrade
+    'YTT',    # flake8-2020
+    'ANN',    # flake8-annotations
+    'B',      # flake8-bugbear
+    'T10',    # flake8-debugger
+    'T20',    # flake8-print
+    'C4',     # flake8-comprehensions
+    'PYI006', # flake8-pyi
+]
+ignore = ['ANN101', 'ANN102']
+pydocstyle = { convention = 'google' }
+
+[tool.ruff.lint.per-file-ignores]
+'docs/*' = ['D', 'ANN']
+'**/__init__.py' = ['D', 'ANN']
+'tests/*' = ['D', 'ANN']
+
+[tool.ruff.format]
+docstring-code-format = true
