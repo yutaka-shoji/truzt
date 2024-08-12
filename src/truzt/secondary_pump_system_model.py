@@ -1,3 +1,5 @@
+"""Module for defining the SecondaryPumpSystem model."""
+
 from typing import Literal, Optional
 
 from pydantic import Field
@@ -6,7 +8,7 @@ from .model_config import BaseConfigModel
 
 
 class SecondaryPumpItem(BaseConfigModel):
-    """Secondary pump item
+    """Secondary pump item.
 
     Attributes:
         number: 台数
@@ -42,7 +44,7 @@ class SecondaryPumpItem(BaseConfigModel):
 
 
 class SecondaryPump(BaseConfigModel):
-    """Secondary pump
+    """Secondary pump.
 
     Attributes:
         temperature_difference: 設計温度差
@@ -65,6 +67,13 @@ class SecondaryPump(BaseConfigModel):
 
 
 class SecondaryPumpSystem(BaseConfigModel):
+    """Secondary pump system.
+
+    Attributes:
+        cooling: 冷房用スペック
+        heating: 暖房用スペック
+    """
+
     cooling: Optional[SecondaryPump] = Field(
         None,
         alias="冷房",  # NOTE: for builelib compatibility

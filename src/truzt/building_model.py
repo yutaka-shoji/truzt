@@ -1,3 +1,5 @@
+"""Module for defining the Building model and related classes."""
+
 from typing import Literal, Optional
 
 from pydantic import Field, field_serializer
@@ -6,7 +8,7 @@ from .model_config import BaseConfigModel
 
 
 class BuildingAddress(BaseConfigModel):
-    """Building Address
+    """Building Address.
 
     Attributes:
         prefecture: 都道府県
@@ -20,7 +22,7 @@ class BuildingAddress(BaseConfigModel):
 
 
 class CoefficientDHC(BaseConfigModel):
-    """Coefficient DHC
+    """Coefficient DHC.
 
     Attributes:
         cooling: 冷熱
@@ -32,7 +34,7 @@ class CoefficientDHC(BaseConfigModel):
 
 
 class Building(BaseConfigModel):
-    """Building info
+    """Building info.
 
     Attributes:
         name: 建築物の名称
@@ -64,5 +66,5 @@ class Building(BaseConfigModel):
     )
 
     @field_serializer("region")
-    def serialize_region(self, region: int):
+    def _serialize_region(self, region: int) -> str:
         return str(region)

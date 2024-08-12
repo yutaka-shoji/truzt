@@ -1,3 +1,5 @@
+"""Module for defining the HeatSourceSystem model."""
+
 from typing import Literal, Optional
 
 from pydantic import Field
@@ -6,7 +8,7 @@ from .model_config import BaseConfigModel
 
 
 class HeatSourceItem(BaseConfigModel):
-    """heat source item
+    """heat source item.
 
     Attributes:
         heat_source_type: 熱源機種
@@ -74,7 +76,7 @@ class HeatSourceItem(BaseConfigModel):
 
 
 class HeatSource(BaseConfigModel):
-    """heat source
+    """heat source.
 
     Attributes:
         storage_type: 蓄熱の種類
@@ -106,6 +108,15 @@ class HeatSource(BaseConfigModel):
 
 
 class HeatSourceSystem(BaseConfigModel):
+    """Heat source system.
+
+    Attributes:
+        cooling: 冷房用の熱源
+        heating: 暖房用の熱源
+        cooling_with_heat_storage: 蓄熱を伴う冷房用の熱源
+        heating_with_heat_storage: 蓄熱を伴う暖房用の熱源
+    """
+
     cooling: Optional[HeatSource] = Field(
         None,
         alias="冷房",

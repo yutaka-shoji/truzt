@@ -1,11 +1,11 @@
 import json
 
-from truzt.models import EnvelopeSet
+from truzt import EnvelopeSet
 
 
 def test_envelope_set_json_serialize():
     # JSONファイルを読み込む
-    with open("sample/WEBPRO_inputSheet_sample_input.json", "r") as file:
+    with open("sample/WEBPRO_inputSheet_sample_input.json") as file:
         data = json.load(file)
 
     # EnvelopeSetのdictを取得

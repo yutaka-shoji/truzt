@@ -1,3 +1,5 @@
+"""Module for defining the PhotovoltaicSystem model."""
+
 from typing import Literal, Optional
 
 from pydantic import Field
@@ -6,7 +8,7 @@ from .model_config import BaseConfigModel
 
 
 class PhotovoltaicSystem(BaseConfigModel):
-    """Photovoltaic system
+    """Photovoltaic system.
 
     Attributes:
         power_conditioner_efficiency: パワーコンディショナの効率

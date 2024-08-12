@@ -1,3 +1,5 @@
+"""Module for defining the EnvelopeSet model."""
+
 from typing import Literal, Optional
 
 from pydantic import Field
@@ -6,7 +8,8 @@ from .model_config import BaseConfigModel
 
 
 class WindowListItem(BaseConfigModel):
-    """窓
+    """Window list item.
+
     NOTE: builelibでは窓面積をWindowNumberに入れている?
 
     Attributes:
@@ -40,7 +43,7 @@ class WindowListItem(BaseConfigModel):
 
 
 class WallListItem(BaseConfigModel):
-    """壁
+    """Wall list item.
 
     Attributes:
         direction: 方位
@@ -99,7 +102,7 @@ class WallListItem(BaseConfigModel):
 
 
 class EnvelopeSet(BaseConfigModel):
-    """外皮
+    """Envelope set.
 
     Attributes:
         is_air_conditioned: 空調の有無

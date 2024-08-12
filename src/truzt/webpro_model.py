@@ -1,3 +1,9 @@
+"""This module defines the WebproModel class.
+
+Classes:
+    WebproModel: A class representing the WEBPRO model.
+"""
+
 from typing import Any, Optional, Union
 
 from pydantic import Field
@@ -34,7 +40,7 @@ from .window_configure_model import WindowConfigure
 
 
 class WebproModel(BaseConfigModel):
-    """WEBPRO model
+    """WEBPRO model.
 
     Attributes:
         building: 建物情報

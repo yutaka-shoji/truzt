@@ -1,3 +1,5 @@
+"""Module for defining the LightingRoom and LightingUnit models."""
+
 from typing import Literal, Optional, Union
 
 from pydantic import ConfigDict, Field
@@ -7,7 +9,7 @@ from .model_config import BaseConfigModel
 
 
 class LightingUnit(BaseConfigModel):
-    """Lighting unit
+    """Lighting unit.
 
     Attributes:
         rated_power: 定格消費電力 (W.unit-1)
@@ -77,12 +79,13 @@ class LightingUnit(BaseConfigModel):
         ]
     ] = Field(
         None,
-        alias="InitialIlluminationCorrectionCTRL",  # NOTE: for builelib compatibility (Ctrl -> CTRL)
+        # NOTE: for builelib compatibility (Ctrl -> CTRL)
+        alias="InitialIlluminationCorrectionCTRL",
     )
 
 
 class LightingRoom(BaseConfigModel):
-    """Lighting room
+    """Lighting room.
 
     Attributes:
         room_width: 室指数 室の間口 (m)

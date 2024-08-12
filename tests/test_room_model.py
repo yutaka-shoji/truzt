@@ -1,16 +1,6 @@
 import json
 
-from truzt.models import (
-    CommunityRoom,
-    DepartmentStoreRoom,
-    FactoryRoom,
-    HospitalRoom,
-    HotelRoom,
-    OfficeRoom,
-    ResidentialComplexRoom,
-    RestaurantRoom,
-    SchoolRoom,
-)
+from truzt import OfficeRoom
 
 
 def test_community_room_json_serialize():
@@ -40,7 +30,7 @@ def test_hotel_room_json_serialize():
 
 def test_office_room_json_serialize():
     # JSONファイルを読み込む
-    with open("sample/WEBPRO_inputSheet_sample_input.json", "r") as file:
+    with open("sample/WEBPRO_inputSheet_sample_input.json") as file:
         data = json.load(file)
 
     # Roomsのdictを取得

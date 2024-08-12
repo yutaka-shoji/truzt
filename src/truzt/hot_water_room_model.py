@@ -1,3 +1,5 @@
+"""Module for defining the HotWaterRoom and HotWaterSystemItem models."""
+
 from typing import Literal, Optional
 
 from pydantic import Field
@@ -6,7 +8,7 @@ from .model_config import BaseConfigModel
 
 
 class HotWaterSystemItem(BaseConfigModel):
-    """Hot water system
+    """Hot water system.
 
     Attributes:
         system_name: 給湯システム名称
@@ -35,7 +37,7 @@ class HotWaterSystemItem(BaseConfigModel):
 
 
 class HotWaterRoom(BaseConfigModel):
-    """Hot water room
+    """Hot water room.
 
     Attributes:
         hot_water_system: list of HotWaterSystemItem

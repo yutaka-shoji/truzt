@@ -1,11 +1,11 @@
 import json
 
-from truzt.models import VentilationRoom
+from truzt import VentilationRoom
 
 
 def test_ventilation_room_json_serialize():
     # JSONファイルを読み込む
-    with open("sample/WEBPRO_inputSheet_sample_input.json", "r") as file:
+    with open("sample/WEBPRO_inputSheet_sample_input.json") as file:
         data = json.load(file)
 
     # VentilationRoomのdictを取得

@@ -1,12 +1,14 @@
+"""Module for defining the CogenerationSystem model."""
+
 from typing import Literal, Optional, Union
 
-from pydantic import Field, field_validator, field_serializer
+from pydantic import Field, field_serializer, field_validator
 
 from .model_config import BaseConfigModel
 
 
 class CogenerationSystem(BaseConfigModel):
-    """Cogeneration system
+    """Cogeneration system.
 
     Attributes:
         rated_capacity: 定格発電出力 (kW)
@@ -94,13 +96,13 @@ class CogenerationSystem(BaseConfigModel):
     heating_system: Optional[str] = None
     hot_water_system: Optional[str] = Field(
         None,
-        alias="HowWaterSystem",  # builelibのタイポ対応
+        alias="HowWaterSystem",  # NOTE: builelibのタイポ対応
     )
     info: Optional[str] = None
 
     @field_validator("is_24hour_operation", mode="before")
     @classmethod
-    def convert_to_bool(cls, arg: Union[str, bool]):
+    def _convert_to_bool(cls, arg: Union[str, bool]) -> bool:
         if arg == "有":
             arg = True
         elif arg == "無":
@@ -112,7 +114,7 @@ class CogenerationSystem(BaseConfigModel):
         return arg
 
     @field_serializer("is_24hour_operation")
-    def convert_to_str(self, arg: bool):
+    def _convert_to_str(self, arg: bool) -> Literal["有", "無"]:
         if arg:
             str_arg = "有"
         else:

@@ -1,12 +1,14 @@
+"""Module for defining the AirConditioningZone model."""
+
 from typing import Literal, Optional, Union
 
-from pydantic import Field, field_validator, field_serializer
+from pydantic import Field, field_serializer, field_validator
 
 from .model_config import BaseConfigModel
 
 
 class AirConditioningZone(BaseConfigModel):
-    """空調ゾーン
+    """Air conditioning zone.
 
     Attributes:
         floor: 階
@@ -20,9 +22,8 @@ class AirConditioningZone(BaseConfigModel):
         info:
     """
 
-    # is_natural_ventilation: Literal["有", "無"]
     is_natural_ventilation: bool = Field(
-        alias="isNatualVentilation",  # builelib タイポ対応
+        alias="isNatualVentilation",  # NOTE: builelib タイポ対応
     )
     is_simultaneous_supply: Literal[
         "有",
@@ -48,7 +49,7 @@ class AirConditioningZone(BaseConfigModel):
 
     @field_validator("is_natural_ventilation", mode="before")
     @classmethod
-    def convert_to_bool(cls, arg: Union[str, bool]):
+    def _convert_to_bool(cls, arg: Union[str, bool]) -> bool:
         if arg == "有":
             is_natural_ventilation = True
         elif arg == "無":
@@ -60,7 +61,7 @@ class AirConditioningZone(BaseConfigModel):
         return is_natural_ventilation
 
     @field_serializer("is_natural_ventilation")
-    def convert_to_str(self, arg: bool):
+    def _convert_to_str(self, arg: bool) -> Literal["有", "無"]:
         if arg:
             str_arg = "有"
         else:

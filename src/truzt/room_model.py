@@ -1,3 +1,5 @@
+"""Module for defining various room models."""
+
 from typing import Literal, Optional
 
 from pydantic import Field
@@ -6,7 +8,7 @@ from .model_config import BaseConfigModel
 
 
 class Zone(BaseConfigModel):
-    """Zone info
+    """Zone info.
 
     Attributes:
         zone_area: ゾーン面積
@@ -16,7 +18,7 @@ class Zone(BaseConfigModel):
 
 
 class BaseRoom(BaseConfigModel):
-    """全室用途に共通する基底クラス
+    """全室用途に共通する基底クラス.
 
     Attributes:
         main_building_type: 建物用途
@@ -81,20 +83,11 @@ class BaseRoom(BaseConfigModel):
 
 
 class OfficeRoom(BaseRoom):
-    """事務所等
+    """事務所等.
 
     Attributes:
-        floor: 階
-        name: 名称
-        main_building_type: 建物用途
         building_type: 室用途(大分類)
         room_type: 室用途(小分類)
-        floor_height: 階高
-        ceiling_height: 天井高
-        room_area: 床面積
-        zone: ゾーン
-        building_model_type: モデル建物
-        building_group: 建物群名称
     """
 
     building_type: Literal["事務所等"] = Field(
@@ -128,20 +121,11 @@ class OfficeRoom(BaseRoom):
 
 
 class HotelRoom(BaseRoom):
-    """ホテル等
+    """ホテル等.
 
     Attributes:
-        floor: 階
-        name: 名称
-        main_building_type: 建物用途
         building_type: 室用途(大分類)
         room_type: 室用途(小分類)
-        floor_height: 階高
-        ceiling_height: 天井高
-        room_area: 床面積
-        zone: ゾーン
-        building_model_type: モデル建物
-        building_group: 建物群名称
     """
 
     building_type: Literal["ホテル等"] = Field(
@@ -187,20 +171,11 @@ class HotelRoom(BaseRoom):
 
 
 class HospitalRoom(BaseRoom):
-    """病院等
+    """病院等.
 
     Attributes:
-        floor: 階
-        name: 名称
-        main_building_type: 建物用途
         building_type: 室用途(大分類)
         room_type: 室用途(小分類)
-        floor_height: 階高
-        ceiling_height: 天井高
-        room_area: 床面積
-        zone: ゾーン
-        building_model_type: モデル建物
-        building_group: 建物群名称
     """
 
     building_type: Literal["病院等"] = Field(
@@ -243,20 +218,11 @@ class HospitalRoom(BaseRoom):
 
 
 class DepartmentStoreRoom(BaseRoom):
-    """百貨店等
+    """百貨店等.
 
     Attributes:
-        floor: 階
-        name: 名称
         main_building_type: 建物用途
         building_type: 室用途(大分類)
-        room_type: 室用途(小分類)
-        floor_height: 階高
-        ceiling_height: 天井高
-        room_area: 床面積
-        zone: ゾーン
-        building_model_type: モデル建物
-        building_group: 建物群名称
     """
 
     building_type: Literal["百貨店等"] = Field(
@@ -287,20 +253,11 @@ class DepartmentStoreRoom(BaseRoom):
 
 
 class SchoolRoom(BaseRoom):
-    """学校等
+    """学校等.
 
     Attributes:
-        floor: 階
-        name: 名称
-        main_building_type: 建物用途
         building_type: 室用途(大分類)
         room_type: 室用途(小分類)
-        floor_height: 階高
-        ceiling_height: 天井高
-        room_area: 床面積
-        zone: ゾーン
-        building_model_type: モデル建物
-        building_group: 建物群名称
     """
 
     building_type: Literal["学校等"] = Field(
@@ -341,20 +298,11 @@ class SchoolRoom(BaseRoom):
 
 
 class RestaurantRoom(BaseRoom):
-    """飲食店等
+    """飲食店等.
 
     Attributes:
-        floor: 階
-        name: 名称
-        main_building_type: 建物用途
         building_type: 室用途(大分類)
         room_type: 室用途(小分類)
-        floor_height: 階高
-        ceiling_height: 天井高
-        room_area: 床面積
-        zone: ゾーン
-        building_model_type: モデル建物
-        building_group: 建物群名称
     """
 
     building_type: Literal["飲食店等"] = Field(
@@ -388,20 +336,11 @@ class RestaurantRoom(BaseRoom):
 
 
 class CommunityRoom(BaseRoom):
-    """集会所等
+    """集会所等.
 
     Attributes:
-        floor: 階
-        name: 名称
-        main_building_type: 建物用途
         building_type: 室用途(大分類)
         room_type: 室用途(小分類)
-        floor_height: 階高
-        ceiling_height: 天井高
-        room_area: 床面積
-        zone: ゾーン
-        building_model_type: モデル建物
-        building_group: 建物群名称
     """
 
     building_type: Literal["集会所等"] = Field(
@@ -475,7 +414,7 @@ class CommunityRoom(BaseRoom):
 
 
 class FactoryRoom(BaseRoom):
-    """工場等
+    """工場等.
 
     Attributes:
         floor: 階
@@ -499,20 +438,11 @@ class FactoryRoom(BaseRoom):
 
 
 class ResidentialComplexRoom(BaseRoom):
-    """共同住宅
+    """共同住宅.
 
     Attributes:
-        floor: 階
-        name: 名称
-        main_building_type: 建物用途
         building_type: 室用途(大分類)
         room_type: 室用途(小分類)
-        floor_height: 階高
-        ceiling_height: 天井高
-        room_area: 床面積
-        zone: ゾーン
-        building_model_type: モデル建物
-        building_group: 建物群名称
     """
 
     building_type: Literal["共同住宅"] = Field(

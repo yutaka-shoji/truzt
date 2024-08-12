@@ -1,12 +1,14 @@
+"""Module for defining the AirHandlingSystem and AirHandlingUnitItem models."""
+
 from typing import Literal, Optional, Union
 
-from pydantic import Field, field_validator, field_serializer
+from pydantic import Field, field_serializer, field_validator
 
 from .model_config import BaseConfigModel
 
 
 class AirHandlingUnitItem(BaseConfigModel):
-    """Air handling unit item
+    """Air handling unit item.
 
     Attributes:
         type: 構成機種
@@ -83,7 +85,7 @@ class AirHandlingUnitItem(BaseConfigModel):
         "air_heat_exchanger_control", "is_air_heat_exchanger", mode="before"
     )
     @classmethod
-    def convert_to_bool(cls, arg: Union[str, bool]):
+    def _convert_to_bool(cls, arg: Union[str, bool]) -> bool:
         if arg == "有":
             arg = True
         elif arg == "無":
@@ -95,7 +97,7 @@ class AirHandlingUnitItem(BaseConfigModel):
         return arg
 
     @field_serializer("air_heat_exchanger_control", "is_air_heat_exchanger")
-    def convert_to_str(self, arg: bool):
+    def _convert_to_str(self, arg: bool) -> Literal["有", "無"]:
         if arg:
             str_arg = "有"
         else:
@@ -104,7 +106,7 @@ class AirHandlingUnitItem(BaseConfigModel):
 
 
 class AirHandlingSystem(BaseConfigModel):
-    """Air handling system
+    """Air handling system.
 
     Attributes:
         is_economizer: 外気冷房制御の有無
@@ -149,7 +151,7 @@ class AirHandlingSystem(BaseConfigModel):
 
     @field_validator("is_economizer", "is_outdoor_air_cut", mode="before")
     @classmethod
-    def convert_to_bool(cls, arg: Union[str, bool]):
+    def _convert_to_bool(cls, arg: Union[str, bool]) -> bool:
         if arg == "有":
             arg = True
         elif arg == "無":
@@ -161,7 +163,7 @@ class AirHandlingSystem(BaseConfigModel):
         return arg
 
     @field_serializer("is_economizer", "is_outdoor_air_cut")
-    def convert_to_str(self, arg: bool):
+    def _convert_to_str(self, arg: bool) -> Literal["有", "無"]:
         if arg:
             str_arg = "有"
         else:

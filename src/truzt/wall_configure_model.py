@@ -1,3 +1,10 @@
+"""This module defines the WallConfigure class and the Layer class.
+
+Classes:
+    Layer: A class representing a building material layer.
+    WallConfigure: A class representing the configuration of a wall.
+"""
+
 from typing import Literal, Optional
 
 from pydantic import Field
@@ -6,7 +13,7 @@ from .model_config import BaseConfigModel
 
 
 class Layer(BaseConfigModel):
-    """建材レイヤー
+    """建材レイヤー.
 
     Attributes:
         material_id: 断熱材の種類
@@ -33,7 +40,7 @@ class Layer(BaseConfigModel):
 
 
 class WallConfigure(BaseConfigModel):
-    """外壁構成
+    """外壁構成.
 
     Attributes:
         wall_type_webpro: 外壁の種類(WEBPRO)

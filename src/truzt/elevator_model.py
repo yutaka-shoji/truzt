@@ -1,3 +1,5 @@
+"""Module for defining the ElevatorItem and Elevators models."""
+
 from typing import Literal, Optional
 
 from pydantic import Field
@@ -6,7 +8,7 @@ from .model_config import BaseConfigModel
 
 
 class ElevatorItem(BaseConfigModel):
-    """Elevaror item
+    """Elevaror item.
 
     Attributes:
         elevator_name: 昇降機系統の名称
@@ -37,7 +39,7 @@ class ElevatorItem(BaseConfigModel):
 
 # TODO: このネスト必要?
 class Elevators(BaseConfigModel):
-    """elevators
+    """Elevators.
 
     Attributes:
         elevator: list of ElevatorItem

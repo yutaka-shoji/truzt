@@ -1,3 +1,10 @@
+"""This module defines the WindowConfigure class.
+
+Classes:
+    WindowConfigure: A class representing the configuration of a window, including attributes such
+        as area, dimensions, input method, frame type, glass properties, and additional information.
+"""
+
 from typing import Literal, Optional
 
 from pydantic import ConfigDict, Field
@@ -7,7 +14,7 @@ from .model_config import BaseConfigModel
 
 
 class WindowConfigure(BaseConfigModel):
-    """窓仕様
+    """窓仕様.
 
     Attributes:
         window_area: 窓面積
@@ -63,8 +70,9 @@ class WindowConfigure(BaseConfigModel):
         None,
         alias="glassID",  # NOTE: for builelib compatibility
     )
-    layerType: Optional[Literal["複層", "単層"]] = Field(
+    layer_type: Optional[Literal["複層", "単層"]] = Field(
         None,
+        alias="layerType",  # NOTE: for builelib compatibility
     )
     glass_uvalue: Optional[float] = Field(
         None,

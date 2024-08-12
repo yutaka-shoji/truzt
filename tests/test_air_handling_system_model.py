@@ -1,11 +1,11 @@
 import json
 
-from truzt.models import AirHandlingSystem
+from truzt import AirHandlingSystem
 
 
 def test_air_handling_system_json_serialize():
     # JSONファイルを読み込む
-    with open("sample/WEBPRO_inputSheet_sample_input.json", "r") as file:
+    with open("sample/WEBPRO_inputSheet_sample_input.json") as file:
         data = json.load(file)
 
     # AirHandlingSystemのdictを取得

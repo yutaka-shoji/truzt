@@ -1,3 +1,9 @@
+"""This module defines the VentilationUnit class.
+
+Classes:
+    VentilationUnit: A class representing a ventilation unit.
+"""
+
 from typing import Literal, Optional, Union
 
 from pydantic import Field
@@ -6,7 +12,7 @@ from .model_config import BaseConfigModel
 
 
 class VentilationUnit(BaseConfigModel):
-    """Ventilation unit
+    """Ventilation unit.
 
     Attributes:
         number: 台数

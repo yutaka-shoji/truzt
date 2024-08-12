@@ -1,3 +1,5 @@
+"""Module for defining the HotWaterSupplySystem model."""
+
 from typing import Literal, Optional
 
 from pydantic import Field
@@ -6,7 +8,7 @@ from .model_config import BaseConfigModel
 
 
 class HeatSourceUnitItem(BaseConfigModel):
-    """Heat source unit item
+    """Heat source unit item.
 
     Attributes:
         usage_type: 給湯用途
@@ -54,7 +56,7 @@ class HeatSourceUnitItem(BaseConfigModel):
 
 
 class HotWaterSupplySystem(BaseConfigModel):
-    """Hot water supply system
+    """Hot water supply system.
 
     Attributes:
         heat_source_unit: list of HeatSourceUnitItem

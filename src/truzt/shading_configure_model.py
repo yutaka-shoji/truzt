@@ -1,3 +1,5 @@
+"""Module for defining the ShadingConfigure model."""
+
 from typing import Optional
 
 from pydantic import Field
@@ -6,7 +8,7 @@ from .model_config import BaseConfigModel
 
 
 class ShadingConfigure(BaseConfigModel):
-    """shading configure model
+    """shading configure model.
 
     Attributes:
         shading_effect_c: shading effect coefficient for cooling
