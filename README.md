@@ -39,6 +39,11 @@ def test_invalid_input():
     except ValueError as e:
         print(e)
 
+    # OUTPUT AS FOLLOWS
+    # 1 validation error for WebproModel
+    # Building.Region
+    #   Input should be less than or equal to 8 [type=less_than_equal, input_value=9, input_type=int]
+
 
 if __name__ == "__main__":
     test_webpro_model_json_serialize()
