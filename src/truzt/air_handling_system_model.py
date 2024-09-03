@@ -70,7 +70,15 @@ class AirHandlingUnitItem(BaseConfigModel):
     air_heat_exchanger_control: Optional[bool] = None
     air_heat_exchanger_power_consumption: Optional[float] = Field(None, ge=0)
 
-    is_air_heat_exchanger: Optional[bool] = Field(
+    is_air_heat_exchanger: Optional[
+        Literal[
+            "有",
+            "無",
+            "全熱交換器無し",
+            "全熱交換器あり・様式2-9記載無し",
+            "全熱交換器あり・様式2-9記載あり",
+        ]
+    ] = Field(
         None,
         alias="isAirHeatExchanger",  # NOTE: for builelib compatibility
     )
@@ -81,9 +89,7 @@ class AirHandlingUnitItem(BaseConfigModel):
 
     info: Optional[str] = None
 
-    @field_validator(
-        "air_heat_exchanger_control", "is_air_heat_exchanger", mode="before"
-    )
+    @field_validator("air_heat_exchanger_control", mode="before")
     @classmethod
     def _convert_to_bool(cls, arg: Union[str, bool]) -> bool:
         if arg == "有":
@@ -96,7 +102,7 @@ class AirHandlingUnitItem(BaseConfigModel):
             raise ValueError("must be '有' or '無' or boolean")
         return arg
 
-    @field_serializer("air_heat_exchanger_control", "is_air_heat_exchanger")
+    @field_serializer("air_heat_exchanger_control")
     def _convert_to_str(self, arg: bool) -> Literal["有", "無"]:
         if arg:
             str_arg = "有"

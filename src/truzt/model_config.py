@@ -1,6 +1,8 @@
 """Module for defining the BaseConfigModel class."""
 
-from pydantic import BaseModel, ConfigDict
+from typing import Any
+
+from pydantic import BaseModel, ConfigDict, field_validator
 from pydantic.alias_generators import to_pascal
 
 
@@ -15,3 +17,10 @@ class BaseConfigModel(BaseModel):
         # 未指定のフィールドを許可しない
         extra="forbid",
     )
+
+    @field_validator("*", mode="before")
+    @classmethod
+    def _emptystr_to_none(cls, v: Any) -> Any:
+        if v == "":
+            return None
+        return v

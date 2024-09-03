@@ -1,11 +1,11 @@
 import json
 
-from truzt import WindowConfigure
+from truzt.window_configure_model import WindowConfigure
 
 
 def test_window_configure_json_serialize():
     # JSONファイルを読み込む
-    with open("sample/WEBPRO_inputSheet_sample_input.json") as file:
+    with open("sample/sample_input_v3.json") as file:
         data = json.load(file)
 
     # WindowConfigureのdictを取得

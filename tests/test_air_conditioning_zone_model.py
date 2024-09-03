@@ -1,11 +1,11 @@
 import json
 
-from truzt import AirConditioningZone
+from truzt.air_conditioning_zone_model import AirConditioningZone
 
 
 def test_air_conditioning_zone_json_serialize():
     # JSONファイルを読み込む
-    with open("sample/WEBPRO_inputSheet_sample_input.json") as file:
+    with open("sample/sample_input_v3.json") as file:
         data = json.load(file)
 
     # AirConditioningZoneのdictを取得

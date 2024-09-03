@@ -4,7 +4,7 @@ Classes:
     WebproModel: A class representing the WEBPRO model.
 """
 
-from typing import Any, Optional, Union
+from typing import Any, Optional
 
 from pydantic import Field
 
@@ -20,17 +20,7 @@ from .hot_water_supply_system_model import HotWaterSupplySystem
 from .lighting_room_model import LightingRoom
 from .model_config import BaseConfigModel
 from .photovoltaic_system_model import PhotovoltaicSystem
-from .room_model import (
-    CommunityRoom,
-    DepartmentStoreRoom,
-    FactoryRoom,
-    HospitalRoom,
-    HotelRoom,
-    OfficeRoom,
-    ResidentialComplexRoom,
-    RestaurantRoom,
-    SchoolRoom,
-)
+from .room_model import Rooms
 from .secondary_pump_system_model import SecondaryPumpSystem
 from .shading_configure_model import ShadingConfigure
 from .ventilation_room_model import VentilationRoom
@@ -66,20 +56,7 @@ class WebproModel(BaseConfigModel):
     building: Building = Field(
         None,
     )
-    rooms: dict[
-        str,
-        Union[
-            OfficeRoom,
-            HotelRoom,
-            HospitalRoom,
-            DepartmentStoreRoom,
-            SchoolRoom,
-            RestaurantRoom,
-            CommunityRoom,
-            FactoryRoom,
-            ResidentialComplexRoom,
-        ],
-    ] = Field(
+    rooms: Rooms = Field(
         None,
     )
     air_conditioning_zone: Optional[dict[str, AirConditioningZone]] = Field(

@@ -1,11 +1,11 @@
 import json
 
-from truzt import SecondaryPumpSystem
+from truzt.secondary_pump_system_model import SecondaryPumpSystem
 
 
 def test_secondary_pump_system_json_serialize():
     # JSONファイルを読み込む
-    with open("sample/WEBPRO_inputSheet_sample_input.json") as file:
+    with open("sample/sample_input_v3.json") as file:
         data = json.load(file)
 
     # SecondaryPumpSystemのdictを取得

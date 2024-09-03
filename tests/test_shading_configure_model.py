@@ -1,13 +1,13 @@
 import json
 
-from truzt import ShadingConfigure
+from truzt.shading_configure_model import ShadingConfigure
 
 
-# TODO: sample/WEBPRO_inputSheet_sample_input.jsonでは
+# TODO: sample/sample_input_v3.jsonでは
 # ShadingConfigureの入力がないからがないから意味ないけど
 def test_shading_configure_json_serialize():
     # JSONファイルを読み込む
-    with open("sample/WEBPRO_inputSheet_sample_input.json") as file:
+    with open("sample/sample_input_v3.json") as file:
         data = json.load(file)
 
     # ShadingConfigureのdictを取得

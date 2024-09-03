@@ -1,11 +1,11 @@
 import json
 
-from truzt import LightingRoom
+from truzt.lighting_room_model import LightingRoom
 
 
 def test_lighting_room_json_serialize():
     # JSONファイルを読み込む
-    with open("sample/WEBPRO_inputSheet_sample_input.json") as file:
+    with open("sample/sample_input_v3.json") as file:
         data = json.load(file)
 
     # LightingSystemsのdictを取得

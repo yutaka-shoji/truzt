@@ -1,11 +1,11 @@
 import json
 
-from truzt import HotWaterRoom
+from truzt.hot_water_room_model import HotWaterRoom
 
 
 def test_hot_water_room_model_json_serialize():
     # JSONファイルを読み込む
-    with open("sample/WEBPRO_inputSheet_sample_input.json") as file:
+    with open("sample/sample_input_v3.json") as file:
         data = json.load(file)
 
     # HotwaterRoomのdictを取得
@@ -16,9 +16,7 @@ def test_hot_water_room_model_json_serialize():
         # HotwaterRoomインスタンスを作成
         hw_room = HotWaterRoom.model_validate(hw_room_dict[key])
         # serialize
-        hw_room_serialized_dict[key] = hw_room.model_dump(
-            by_alias=True, exclude_unset=True
-        )
+        hw_room_serialized_dict[key] = hw_room.model_dump(by_alias=True, exclude_unset=True)
 
     # check if the original dict and the serialized
     assert hw_room_dict == hw_room_serialized_dict

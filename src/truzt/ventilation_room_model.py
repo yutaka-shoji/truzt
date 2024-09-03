@@ -7,8 +7,6 @@ Classes:
 
 from typing import Literal, Optional
 
-from pydantic import Field
-
 from .model_config import BaseConfigModel
 
 
@@ -32,8 +30,5 @@ class VentilationRoom(BaseConfigModel):
         ventilation_unit_ref: dict[str, VentilationUnitRef]
     """
 
-    ventilation_type: Optional[Literal["一種換気", "二種換気", "三種換気"]] = Field(
-        None,
-        description="V1-3:換気方式",
-    )
+    ventilation_type: Optional[Literal["一種換気", "二種換気", "三種換気"]] = None
     ventilation_unit_ref: dict[str, VentilationUnitRef]

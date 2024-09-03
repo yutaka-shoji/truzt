@@ -11,6 +11,10 @@
 -e file:.
 annotated-types==0.7.0
     # via pydantic
+et-xmlfile==1.1.0
+    # via openpyxl
+openpyxl==3.1.5
+    # via truzt
 pydantic==2.8.2
     # via truzt
 pydantic-core==2.20.1

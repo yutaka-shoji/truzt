@@ -1,12 +1,13 @@
 [project]
 name = "truzt"
 version = "0.0.1"
-description = "WEBPRO Data Model"
+description = "truzt --Building Data Model--"
 authors = [
     { name = "Shoji, Yutaka", email = "ytk.shoji@gmail.com" }
 ]
 dependencies = [
     "pydantic>=2.8.2",
+    "openpyxl>=3.1.5",
 ]
 readme = "README.md"
 requires-python = ">= 3.9"
@@ -59,7 +60,7 @@ select = [
     'C4',     # flake8-comprehensions
     'PYI006', # flake8-pyi
 ]
-ignore = ['ANN101', 'ANN102']
+ignore = ['ANN101', 'ANN102', 'ANN401']
 pydocstyle = { convention = 'google' }
 
 [tool.ruff.lint.per-file-ignores]

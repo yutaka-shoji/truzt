@@ -33,7 +33,7 @@ class Layer(BaseConfigModel):
     )
     thickness: Optional[float] = Field(
         None,
-        gt=0,
+        ge=0,
         alias="thickness",  # NOTE: for builelib compatibility
     )
     info: Optional[str] = None
@@ -77,9 +77,7 @@ class WallConfigure(BaseConfigModel):
         alias="solarAbsorptionRatio",  # NOTE: for builelib compatibility
     )
 
-    input_method: Optional[
-        Literal["熱貫流率を入力", "建材構成を入力", "断熱材種類を入力"]
-    ] = Field(
+    input_method: Optional[Literal["熱貫流率を入力", "建材構成を入力", "断熱材種類を入力"]] = Field(
         None,
         alias="inputMethod",  # NOTE: for builelib compatibility
     )
@@ -91,7 +89,7 @@ class WallConfigure(BaseConfigModel):
 
     conductivity: Optional[float] = Field(
         None,
-        gt=0.0,
+        ge=0.0,
         alias="conductivity",  # NOTE: for builelib compatibility
     )
 

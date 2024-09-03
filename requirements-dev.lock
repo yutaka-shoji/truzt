@@ -43,6 +43,8 @@ dnspython==2.6.1
     # via email-validator
 email-validator==2.2.0
     # via pydantic
+et-xmlfile==1.1.0
+    # via openpyxl
 exceptiongroup==1.2.2
     # via pytest
 filelock==3.15.4
@@ -117,6 +119,8 @@ mypy-extensions==1.0.0
 nodeenv==1.9.1
     # via pre-commit
     # via pyright
+openpyxl==3.1.5
+    # via truzt
 packaging==24.1
     # via black
     # via datamodel-code-generator

@@ -4057,7 +4057,7 @@
       "VentilationUnitRef": {
         "EF-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4066,7 +4066,7 @@
       "VentilationUnitRef": {
         "EF-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4075,7 +4075,7 @@
       "VentilationUnitRef": {
         "EF-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4084,7 +4084,7 @@
       "VentilationUnitRef": {
         "EF-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4093,7 +4093,7 @@
       "VentilationUnitRef": {
         "EF-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4102,11 +4102,11 @@
       "VentilationUnitRef": {
         "EF-6": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         },
         "SF-6": {
           "UnitType": "給気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4115,7 +4115,7 @@
       "VentilationUnitRef": {
         "EF-7": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4124,11 +4124,11 @@
       "VentilationUnitRef": {
         "EF-8": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         },
         "SF-8": {
           "UnitType": "給気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4137,7 +4137,7 @@
       "VentilationUnitRef": {
         "EF-2-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4146,7 +4146,7 @@
       "VentilationUnitRef": {
         "EF-2-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4155,7 +4155,7 @@
       "VentilationUnitRef": {
         "EF-2-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4164,7 +4164,7 @@
       "VentilationUnitRef": {
         "EF-2-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4173,7 +4173,7 @@
       "VentilationUnitRef": {
         "EF-2-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4182,7 +4182,7 @@
       "VentilationUnitRef": {
         "EF-3-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4191,7 +4191,7 @@
       "VentilationUnitRef": {
         "EF-3-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4200,7 +4200,7 @@
       "VentilationUnitRef": {
         "EF-3-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4209,7 +4209,7 @@
       "VentilationUnitRef": {
         "EF-3-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4218,7 +4218,7 @@
       "VentilationUnitRef": {
         "EF-3-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4227,7 +4227,7 @@
       "VentilationUnitRef": {
         "EF-4-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4236,7 +4236,7 @@
       "VentilationUnitRef": {
         "EF-4-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4245,7 +4245,7 @@
       "VentilationUnitRef": {
         "EF-4-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4254,7 +4254,7 @@
       "VentilationUnitRef": {
         "EF-4-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4263,7 +4263,7 @@
       "VentilationUnitRef": {
         "EF-4-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4272,7 +4272,7 @@
       "VentilationUnitRef": {
         "EF-5-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4281,7 +4281,7 @@
       "VentilationUnitRef": {
         "EF-5-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4290,7 +4290,7 @@
       "VentilationUnitRef": {
         "EF-5-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4299,7 +4299,7 @@
       "VentilationUnitRef": {
         "EF-5-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4308,7 +4308,7 @@
       "VentilationUnitRef": {
         "EF-5-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4317,7 +4317,7 @@
       "VentilationUnitRef": {
         "EF-6-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4326,7 +4326,7 @@
       "VentilationUnitRef": {
         "EF-6-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4335,7 +4335,7 @@
       "VentilationUnitRef": {
         "EF-6-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4344,7 +4344,7 @@
       "VentilationUnitRef": {
         "EF-6-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4353,7 +4353,7 @@
       "VentilationUnitRef": {
         "EF-6-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4362,7 +4362,7 @@
       "VentilationUnitRef": {
         "EF-7-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4371,7 +4371,7 @@
       "VentilationUnitRef": {
         "EF-7-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4380,7 +4380,7 @@
       "VentilationUnitRef": {
         "EF-7-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4389,7 +4389,7 @@
       "VentilationUnitRef": {
         "EF-7-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4398,7 +4398,7 @@
       "VentilationUnitRef": {
         "EF-7-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4407,15 +4407,15 @@
       "VentilationUnitRef": {
         "PAC1": {
           "UnitType": "空調",
-          "Info": ""
+          "Info": null
         },
         "PAC1_fan1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         },
         "PAC1_fan2": {
           "UnitType": "給気",
-          "Info": ""
+          "Info": null
         }
       }
     }
