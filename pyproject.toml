@@ -64,3 +64,7 @@ pydocstyle = { convention = 'google' }
 
 [tool.ruff.format]
 docstring-code-format = true
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
