@@ -28,6 +28,7 @@ nav:
   - Home:
       - Overview: index.md
       - License: license.md
+      - Contribution Guideline: CONTRIBUTING.md
   - Reference: reference/
 
 plugins:
