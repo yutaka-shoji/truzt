@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "tekumara.typos-vscode",
+    "charliermarsh.ruff",
+    "ms-python.vscode-pylance"
+  ]
+}

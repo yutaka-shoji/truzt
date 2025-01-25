@@ -2,13 +2,8 @@
 name = "truzt"
 version = "0.0.1"
 description = "truzt --Building Data Model--"
-authors = [
-    { name = "Shoji, Yutaka", email = "ytk.shoji@gmail.com" }
-]
-dependencies = [
-    "pydantic>=2.8.2",
-    "openpyxl>=3.1.5",
-]
+authors = [{ name = "Shoji, Yutaka", email = "ytk.shoji@gmail.com" }]
+dependencies = ["pydantic>=2.8.2", "openpyxl>=3.1.5"]
 readme = "README.md"
 requires-python = ">= 3.9"
 
@@ -16,9 +11,8 @@ requires-python = ">= 3.9"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.rye]
-managed = true
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "ruff>=0.5.7",
     "pyright>=1.1.375",
     "pre-commit>=3.8.0",
@@ -70,3 +64,7 @@ pydocstyle = { convention = 'google' }
 
 [tool.ruff.format]
 docstring-code-format = true
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
