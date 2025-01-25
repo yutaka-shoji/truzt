@@ -53,10 +53,10 @@ class WebproModel(BaseConfigModel):
         cogeneration_systems: コジェネレーション
     """
 
-    building: Building = Field(
+    building: Optional[Building] = Field(
         None,
     )
-    rooms: Rooms = Field(
+    rooms: Optional[Rooms] = Field(
         None,
     )
     air_conditioning_zone: Optional[dict[str, AirConditioningZone]] = Field(

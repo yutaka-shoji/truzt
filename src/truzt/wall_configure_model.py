@@ -55,16 +55,18 @@ class WallConfigure(BaseConfigModel):
         info: 備考
     """
 
-    wall_type_webpro: Literal["外壁", "接地壁"] = Field(
+    wall_type_webpro: Optional[Literal["外壁", "接地壁"]] = Field(
         None,
         alias="wall_type_webpro",  # NOTE: for builelib compatibility
     )
 
-    structure_type: Literal[
-        "木造",
-        "鉄筋コンクリート造等",
-        "鉄骨造",
-        "その他",
+    structure_type: Optional[
+        Literal[
+            "木造",
+            "鉄筋コンクリート造等",
+            "鉄骨造",
+            "その他",
+        ]
     ] = Field(
         None,
         alias="structureType",  # NOTE: for builelib compatibility
