@@ -51,7 +51,8 @@ pre-commit install
 
 #### 2.1 Ruff
 
-主なルール：
+主なルール:
+
 - 行の最大長: 100文字
 - docstringスタイル: Google形式
 - インポートの自動整理
@@ -66,6 +67,7 @@ ruff format .       # コードフォーマット
 #### 2.2 Pyright
 
 Pyrightは型チェックを行い, 以下を確認します：
+
 - すべての関数とメソッドの型アノテーション
 - 変数の型の整合性
 - オプショナルな値の適切な処理
@@ -74,7 +76,9 @@ Pyrightは型チェックを行い, 以下を確認します：
 設定は`pyproject.toml`の`[tool.pyright]`セクションで管理されています.
 
 #### 2.3 VSCode Extensions
+
 VSCodeでの開発では以下の拡張を推奨します：
+
 - Linter, Formatter: [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)
 - Python Type Check: [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
 - Typo Check: [Typos spell checker](https://marketplace.visualstudio.com/items?itemName=tekumara.typos-vscode)
@@ -84,9 +88,9 @@ VSCodeでの開発では以下の拡張を推奨します：
 1. 変更をコミットし, プッシュします
 2. GitHubでプルリクエストを作成します
 3. プルリクエストのタイトルと説明には以下を含めてください：
-   - 変更の目的
-   - 変更の概要
-   - 関連するIssue番号
+> - 変更の目的
+> - 変更の概要
+> - 関連するIssue番号
 
 ### 4. レビュープロセス
 
