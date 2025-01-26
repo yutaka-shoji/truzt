@@ -51,4 +51,4 @@ if __name__ == "__main__":
 ```
 
 ## Contribution
-See docs/CONTRIBUTING.md
+See [docs/CONTRIBUTING.md](https://github.com/yutaka-shoji/truzt/blob/main/docs/CONTRIBUTING.md)
