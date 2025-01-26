@@ -49,3 +49,6 @@ if __name__ == "__main__":
     test_webpro_model_json_serialize()
     test_invalid_input()
 ```
+
+## Contribution
+See docs/CONTRIBUTING.md
