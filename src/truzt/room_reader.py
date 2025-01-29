@@ -1,20 +1,20 @@
-"""Room readerの実装を提供するモジュール。."""
+"""Room readerの実装を提供するモジュール."""
 
 from .reader import ExcelReader
 from .room_model import Room, Rooms
 
 
 class RoomReader(ExcelReader[Rooms]):
-    """RoomModelの読み込みを行うクラス。."""
+    """RoomModelの読み込みを行うクラス."""
 
     def read(self) -> Rooms:
-        """Excelファイルから室情報を読み込む。.
+        """Excelファイルから室情報を読み込む.
 
         Returns:
-            Rooms: 室情報の辞書。
+            Rooms: 室情報の辞書.
 
         Raises:
-            ExcelReadError: 読み込みに失敗した場合。
+            ExcelReadError: 読み込みに失敗した場合.
         """
         sheet = self.cell_mapping["sheet"]
         cells = self.cell_mapping["cells"]

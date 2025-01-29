@@ -1,4 +1,4 @@
-"""Excelファイルからのデータ読み込みに関する基底実装を提供するモジュール。."""
+"""Excelファイルからのデータ読み込みに関する基底実装を提供するモジュール."""
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
@@ -15,33 +15,33 @@ T = TypeVar("T", bound=BaseModel)
 
 @dataclass
 class ExcelReadError(Exception):
-    """Excelファイルの読み込み時に発生するエラー。."""
+    """Excelファイルの読み込み時に発生するエラー."""
 
     sheet: str
     cell: str
     message: str
 
     def __str__(self) -> str:
-        """エラーメッセージを文字列形式で返す。.
+        """エラーメッセージを文字列形式で返す.
 
         Returns:
-            str: エラーメッセージ。
+            str: エラーメッセージ.
         """
         return f"Sheet '{self.sheet}' Cell '{self.cell}': {self.message}"
 
 
 class ValidationMixin:
-    """セルの検証機能を提供するMixin。."""
+    """セルの検証機能を提供するMixin."""
 
     def validate_required_cells(self, sheet: str, required_cells: list[str]) -> None:
-        """必須セルの存在チェック。.
+        """必須セルの存在チェック.
 
         Args:
-            sheet: シート名。
-            required_cells: 必須セルのアドレスリスト。
+            sheet: シート名.
+            required_cells: 必須セルのアドレスリスト.
 
         Raises:
-            ExcelReadError: 必須セルが存在しない場合。
+            ExcelReadError: 必須セルが存在しない場合.
         """
         worksheet = self._get_worksheet(sheet)  # type: ignore
         for cell in required_cells:
@@ -49,15 +49,15 @@ class ValidationMixin:
                 raise ExcelReadError(sheet, cell, "必須セルが空です") from None
 
     def validate_cell_format(self, sheet: str, cell: str, format_type: str) -> None:
-        """セルの形式チェック。.
+        """セルの形式チェック.
 
         Args:
-            sheet: シート名。
-            cell: セルのアドレス。
-            format_type: 期待される形式 (e.g., "numeric", "text", "date")。
+            sheet: シート名.
+            cell: セルのアドレス.
+            format_type: 期待される形式 (e.g., "numeric", "text", "date").
 
         Raises:
-            ExcelReadError: セルの形式が不正な場合。
+            ExcelReadError: セルの形式が不正な場合.
         """
         worksheet = self._get_worksheet(sheet)  # type: ignore
         value = worksheet[cell].value
@@ -73,28 +73,28 @@ class ValidationMixin:
 
 
 class ExcelReader(ABC, Generic[T], ValidationMixin):
-    """ExcelファイルからWEBPROデータを読み込む基底クラス。.
+    """ExcelファイルからWEBPROデータを読み込む基底クラス.
 
-    genericなT型をパラメータとして持ち、ValidationMixinを継承しています。
-    T型はpydanticのBaseModelを継承している必要があります。
+    genericなT型をパラメータとして持ち、ValidationMixinを継承しています.
+    T型はpydanticのBaseModelを継承している必要があります.
     """
 
     def __init__(self, workbook: Workbook, version: Literal["v2", "v3"]) -> None:
-        """リーダーの初期化。.
+        """リーダーの初期化.
 
         Args:
-            workbook: openpyxlのWorkbookオブジェクト。
-            version: WEBPROのバージョン ("v2" or "v3")。
+            workbook: openpyxlのWorkbookオブジェクト.
+            version: WEBPROのバージョン ("v2" or "v3").
         """
         self.wb = workbook
         self.version = version
         self.cell_mapping = self._load_cell_mapping()
 
     def _load_cell_mapping(self) -> dict:
-        """バージョンに応じたセル座標マッピングを読み込む。.
+        """バージョンに応じたセル座標マッピングを読み込む.
 
         Returns:
-            dict: マッピング定義の辞書。
+            dict: マッピング定義の辞書.
         """
         config_dir = Path(__file__).parent / "config"
         mapping_file = config_dir / "cell_mapping.yaml"
@@ -113,16 +113,16 @@ class ExcelReader(ABC, Generic[T], ValidationMixin):
         return version_mapping
 
     def _get_worksheet(self, name: str) -> Worksheet:
-        """ワークシートを取得。.
+        """ワークシートを取得.
 
         Args:
-            name: シート名。
+            name: シート名.
 
         Returns:
-            Worksheet: ワークシートオブジェクト。
+            Worksheet: ワークシートオブジェクト.
 
         Raises:
-            ExcelReadError: シートが存在しない場合。
+            ExcelReadError: シートが存在しない場合.
         """
         try:
             return self.wb[name]
@@ -130,18 +130,18 @@ class ExcelReader(ABC, Generic[T], ValidationMixin):
             raise ExcelReadError("", name, f"シート '{name}' が存在しません") from e
 
     def read_cell(self, sheet: str, address: str, optional: bool = False) -> Any:
-        """セルの値を読み込み、適切な型に変換。.
+        """セルの値を読み込み、適切な型に変換.
 
         Args:
-            sheet: シート名。
-            address: セルのアドレス。
-            optional: 必須でない場合True。
+            sheet: シート名.
+            address: セルのアドレス.
+            optional: 必須でない場合True.
 
         Returns:
-            Any: セルの値。
+            Any: セルの値.
 
         Raises:
-            ExcelReadError: セルが存在しないか値の取得に失敗した場合。
+            ExcelReadError: セルが存在しないか値の取得に失敗した場合.
         """
         try:
             worksheet = self._get_worksheet(sheet)
@@ -159,9 +159,9 @@ class ExcelReader(ABC, Generic[T], ValidationMixin):
 
     @abstractmethod
     def read(self) -> T:
-        """モデルの読み込みを実装。.
+        """モデルの読み込みを実装.
 
         Returns:
-            T: 読み込んだモデルオブジェクト。
+            T: 読み込んだモデルオブジェクト.
         """
         pass

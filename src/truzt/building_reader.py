@@ -1,20 +1,20 @@
-"""Building readerの実装を提供するモジュール。."""
+"""Building readerの実装を提供するモジュール."""
 
 from .building_model import Building, BuildingAddress, CoefficientDHC
 from .reader import ExcelReader
 
 
 class BuildingReader(ExcelReader[Building]):
-    """BuildingModelの読み込みを行うクラス。."""
+    """BuildingModelの読み込みを行うクラス."""
 
     def read(self) -> Building:
-        """Excelファイルから建物情報を読み込む。.
+        """Excelファイルから建物情報を読み込む.
 
         Returns:
-            Building: 建物情報。
+            Building: 建物情報.
 
         Raises:
-            ExcelReadError: 読み込みに失敗した場合。
+            ExcelReadError: 読み込みに失敗した場合.
         """
         sheet = self.cell_mapping["sheet"]
 

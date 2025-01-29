@@ -1,4 +1,4 @@
-"""WEBPRO readerの実装を提供するモジュール。."""
+"""WEBPRO readerの実装を提供するモジュール."""
 
 from pathlib import Path
 from typing import Literal
@@ -11,18 +11,18 @@ from .webpro_model import WebproModel
 
 
 def read_webpro_excel(path: str, version: Literal["v2", "v3"] = "v3") -> WebproModel:
-    """WEBPROのExcelファイルを読み込んでWebproModelを生成する。.
+    """WEBPROのExcelファイルを読み込んでWebproModelを生成する.
 
     Args:
-        path: Excelファイルのパス。
-        version: WEBPROのバージョン ("v2" or "v3")。
+        path: Excelファイルのパス.
+        version: WEBPROのバージョン ("v2" or "v3").
 
     Returns:
-        WebproModel: 読み込んだデータ。
+        WebproModel: 読み込んだデータ.
 
     Raises:
-        ExcelReadError: 読み込みに失敗した場合。
-        FileNotFoundError: ファイルが存在しない場合。
+        ExcelReadError: 読み込みに失敗した場合.
+        FileNotFoundError: ファイルが存在しない場合.
     """
     # Excelファイルの存在チェック
     excel_path = Path(path)
