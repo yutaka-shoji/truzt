@@ -13,3 +13,5 @@ uv.lock
 out/*
 
 tmp.py
+
+builelib/

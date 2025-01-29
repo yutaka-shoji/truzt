@@ -1,0 +1,59 @@
+building:
+  v2:
+    sheet: "0) 基本情報"
+    cells:
+      name: "C9"
+      region: "C12"
+      building_address:
+        prefecture: "D10"
+        city: "F10"
+        address: "C11"
+      building_floor_area: "C17"
+      annual_solar_region: "C18"
+      coefficient_dhc:
+        cooling: "C19"
+        heating: "C20"
+  v3:
+    sheet: "0) 基本情報"
+    cells:
+      name: "C9"
+      region: "C12"
+      building_address:
+        prefecture: "D10"
+        city: "F10"
+        address: "C11"
+      building_floor_area: "C17"
+      annual_solar_region: "C18"
+      coefficient_dhc:
+        cooling: "C19"
+        heating: "C20"
+
+room:
+  v2:
+    sheet: "1) 室仕様"
+    cells:
+      min_row: 11
+      floor: "A"
+      name: "B"
+      main_building_type: "C"
+      building_type: "C"
+      room_type: "D"
+      room_area: "E"
+      floor_height: "F"
+      ceiling_height: "G"
+      building_model_type: "L"
+      info: "M"
+  v3:
+    sheet: "1) 室仕様"
+    cells:
+      min_row: 11
+      floor: "A"
+      name: "B"
+      main_building_type: "C"
+      building_type: "D"
+      room_type: "E"
+      room_area: "F"
+      floor_height: "G"
+      ceiling_height: "H"
+      building_model_type: "M"
+      info: "N"

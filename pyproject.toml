@@ -35,6 +35,7 @@ packages = ["src/truzt"]
 # ----------ruff linter/formatter----------
 [tool.ruff]
 line-length = 100
+extend-exclude = ["builelib/", ".clinerules"]
 
 [tool.ruff.lint]
 select = [
@@ -68,3 +69,4 @@ docstring-code-format = true
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
+ignore = ["builelib/**", ".clinerules"]
