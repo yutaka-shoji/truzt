@@ -5,6 +5,7 @@ from typing import Literal
 
 from openpyxl import load_workbook
 
+from .air_conditioning_zone_reader import AirConditioningZoneReader
 from .building_reader import BuildingReader
 from .room_reader import RoomReader
 from .webpro_model import WebproModel
@@ -35,12 +36,13 @@ def read_webpro_excel(path: str, version: Literal["v2", "v3"] = "v3") -> WebproM
     # 各コンポーネントの読み込み
     building = BuildingReader(wb, version).read()
     rooms = RoomReader(wb, version).read()
+    air_conditioning_zones = AirConditioningZoneReader(wb, version).read()
 
     # WebproModelの生成
     return WebproModel(
         building=building,
         rooms=rooms,
-        air_conditioning_zone={},  # 現状は未実装
+        air_conditioning_zone=air_conditioning_zones.root,
         wall_configure={},
         window_configure={},
         envelope_set={},

@@ -55,7 +55,7 @@ select = [
     'C4',     # flake8-comprehensions
     'PYI006', # flake8-pyi
 ]
-ignore = ['ANN101', 'ANN102', 'ANN401']
+ignore = ['ANN101', 'ANN102', 'ANN401', "T201", "D100"]
 pydocstyle = { convention = 'google' }
 
 [tool.ruff.lint.per-file-ignores]

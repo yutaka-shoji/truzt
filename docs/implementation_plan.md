@@ -18,7 +18,31 @@ truztは、WEBPROシミュレーションツールの入力ファイル（Excel�
    - [x] 新しい基盤クラスへの移行
    - [x] テストケースの拡充
 
-### 2. 新規コンポーネント実装フェーズ
+### 2. buielibの実装理解フェーズ
+builelibのmake_inputdata.pyの処理フローを理解し，コードの可読性とメンテナンス性を向上させるための最小限のリファクタリングを行う．詳細な作業計画は[builelib実装理解フェーズ作業計画書](builelib_understanding.md)を参照．
+
+主な作業内容：
+1. コード構造の把握
+   - 処理フローの理解
+   - シート処理パターンの整理
+   - 重複処理の特定
+
+2. リファクタリング実装
+   - 共通処理のメソッド化
+   - コードの構造化
+   - 命名規則の統一
+
+3. テスト整備
+   - シート読み込みテスト
+   - データ変換テスト
+   - エラーケーステスト
+
+主な成果物：
+- make_inputdata_refactored.py: リファクタリング実装
+- test_make_inputdata.py: テストコード
+- 処理パターンと共通処理の説明ドキュメント
+
+### 3. 新規コンポーネント実装フェーズ
 - [ ] Air Conditioning Zone
 - [ ] Wall Configure
 - [ ] Window Configure
@@ -37,12 +61,12 @@ truztは、WEBPROシミュレーションツールの入力ファイル（Excel�
 - [ ] Cogeneration Systems
 - [ ] Special Input Data
 
-### 3. バリデーション強化フェーズ 
+### 4. バリデーション強化フェーズ 
 - [ ] フィールドの制約条件の実装
 - [ ] クロスバリデーションルールの実装
 - [ ] エラーメッセージの日本語化
 
-### 4. ドキュメント整備フェーズ
+### 5. ドキュメント整備フェーズ
 - [ ] APIドキュメントの作成
 - [ ] 使用方法のガイドの作成
 - [ ] サンプルコードの追加
@@ -76,36 +100,18 @@ truztは、WEBPROシミュレーションツールの入力ファイル（Excel�
 ├── mkdocs.yml
 ├── out
 ├── pyproject.toml
-├── sample # WEBPROexcelファイルと等価なjsonのサンプル
+├── sample # WEBPROexcelファイルおよび等価なjson, csvのサンプル
 │   ├── sample_input_v2.json
 │   ├── sample_input_v2.xlsm
+│   ├── sample_input_v2_csv/ # sample_input_v2.xlsxの内容がシートごとにcsv出力されたものが保存されている　
 │   ├── sample_input_v3.json
-│   └── sample_input_v3.xlsx
+│   ├── sample_input_v3.xlsx
+│   └── sample_input_v3_csv/ # sample_input_v3.xlsxの内容がシートごとにcsv出力されたものが保存されている　
 ├── scripts
 │   └── gen_ref_pages.py # mkdocs用
 ├── src
 │   └── truzt/ # truztの本実装
-├── tests # testスクリプト
-    ├── test_air_conditioning_zone_model.py
-    ├── test_air_handling_system_model.py
-    ├── test_building_model.py
-    ├── test_cogeneration_model.py
-    ├── test_elevator_model.py
-    ├── test_envelope_set_model.py
-    ├── test_heat_source_system_model.py
-    ├── test_hot_water_room_model.py
-    ├── test_hot_water_supply_system_model.py
-    ├── test_lighting_room_model.py
-    ├── test_photovoltaic_system_model.py
-    ├── test_room_model.py
-    ├── test_secondary_pump_system_model.py
-    ├── test_shading_configure_model.py
-    ├── test_utils.py
-    ├── test_ventilation_room_model.py
-    ├── test_ventilation_unit_model.py
-    ├── test_wall_configure_model.py
-    ├── test_webpro_model.py
-    └── test_window_configure_model.py
+└── tests # testスクリプト
 ```
 
 ## 現状
@@ -327,3 +333,19 @@ sample/sample_input_v3.xlsx から sample/sample_input_v3.json と同等のJSON�
   - エラーハンドリングのテスト
 - 基盤整備フェーズの全タスクが完了
 - 次のフェーズ（新規コンポーネント実装）への移行準備が整った
+
+### 2024-02-01
+#### builelib実装理解フェーズの完了確認
+- make_inputdata.pyの処理フロー分析が完了
+  - 全体構造の図式化
+  - シート別処理パターンの整理
+  - データ読み込み・バリデーションパターンの分類
+- リファクタリングによる実装理解が深化
+  - make_inputdata_refactored.pyの作成
+  - test_make_inputdata.pyによるテスト整備
+  - 共通パターンの抽出と文書化
+- 実装パターンガイドの整備
+  - Readerクラス実装パターンの定義
+  - テストパターンの体系化
+  - ベストプラクティスの文書化
+- 次のフェーズ（空調ゾーン実装）への移行準備が完了

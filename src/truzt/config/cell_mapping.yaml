@@ -57,3 +57,29 @@ room:
       ceiling_height: "H"
       building_model_type: "M"
       info: "N"
+
+air_conditioning_zone:
+  v2:
+    sheet: "2-1) 空調ゾーン"
+    cells:
+      min_row: 11
+      floor: "H"
+      name: "I"
+      ahu_cooling_inside_load: "J"
+      ahu_cooling_outdoor_load: "K"
+      ahu_heating_inside_load: "J"
+      ahu_heating_outdoor_load: "K"
+      info: "L"
+  v3:
+    sheet: "2-1) 空調ゾーン"
+    cells:
+      min_row: 11
+      floor: "H"
+      name: "I"
+      is_natural_ventilation: "C"
+      is_simultaneous_supply: "D"
+      ahu_cooling_inside_load: "J"
+      ahu_cooling_outdoor_load: "K"
+      ahu_heating_inside_load: "J"
+      ahu_heating_outdoor_load: "K"
+      info: "L"

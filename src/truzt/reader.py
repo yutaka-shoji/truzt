@@ -102,7 +102,13 @@ class ExcelReader(ABC, Generic[T], ValidationMixin):
         with open(mapping_file) as f:
             mappings = yaml.safe_load(f)
 
-        component_name = self.__class__.__name__.lower().replace("reader", "")
+        # コンポーネント名をプロパティから取得
+        # プロパティが実装されていない場合はクラス名から推測
+        try:
+            component_name = self._component_name  # type: ignore
+        except AttributeError:
+            component_name = self.__class__.__name__.lower().replace("reader", "")
+
         if component_name not in mappings:
             raise ValueError(f"セル座標マッピングが定義されていません: {component_name}")
 
