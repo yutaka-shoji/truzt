@@ -4,15 +4,6 @@
 
 ## Data Validation
 
-## Serialization
-
-## [WIP] Convert excel to json
-
-- Building -> 実装済
-- Room -> 実装済
-
-## Usage
-
 ```python
 import json
 
@@ -49,6 +40,35 @@ if __name__ == "__main__":
     test_webpro_model_json_serialize()
     test_invalid_input()
 ```
+
+## [WIP] Convert excel to json
+
+### Roadmap
+
+| model                                 | v2  | v3  | reference sheet                   |
+| ------------------------------------- | --- | --- | --------------------------------- |
+| `Building`                            | ✅  | ✅  | **0) 基本情報**                   |
+| `Rooms`                               | ✅  | ✅  | **1) 室仕様**                     |
+| `AirConditioningZone`                 | ✅  | ⬜  | **2-1) 空調ゾーン**               |
+| `WallConfigure`                       | ⬜  | ⬜  | **2-2) 外壁構成**                 |
+| `WindowConfigure`                     | ⬜  | ⬜  | **2-3) 窓仕様**                   |
+| `EnvelopeSet` / `ShadingConfigure`    | ⬜  | ⬜  | **2-4) 外皮**                     |
+| `HeatSourceSystem`                    | ⬜  | ⬜  | **2-5) 熱源**                     |
+| `SecondaryPumpSystem`                 | ⬜  | ⬜  | **2-6) 2 次ﾎﾟﾝﾌﾟ**                |
+| `AirHandlingSystem`                   | ⬜  | ⬜  | **2-7) 空調機**                   |
+| **only v3?**                          | ⬜  | ⬜  | **2-8) 熱源水温度**               |
+| **only v3?**                          | ⬜  | ⬜  | **2-9) 全熱交換器**               |
+| `VentilationRoom`                     | ⬜  | ⬜  | **3-1) 換気室**                   |
+| `VentilationUnit`                     | ⬜  | ⬜  | **3-2) 換気送風機**               |
+| `VentilationRoom` / `VentilationUnit` | ⬜  | ⬜  | **3-3) 換気空調機**               |
+| **only v3?**                          | ⬜  | ⬜  | **3-4) 年間平均負荷率**           |
+| `LightingRoom`                        | ⬜  | ⬜  | **4) 照明**                       |
+| `HotWaterRoom`                        | ⬜  | ⬜  | **5-1) 給湯室**                   |
+| `HotWaterSupplySystem`                | ⬜  | ⬜  | **5-2) 給湯機器**                 |
+| `Elevators`                           | ⬜  | ⬜  | **6) 昇降機**                     |
+| `PhotovoltaicSystem`                  | ⬜  | ⬜  | **7-1) 太陽光発電**               |
+| `CogenerationSystem`                  | ⬜  | ⬜  | **7-3) コージェネレーション設備** |
+| _builelib_ **not supported?**         | ⬜  | ⬜  | **8) 非空調外皮**                 |
 
 ## Contribution
 
