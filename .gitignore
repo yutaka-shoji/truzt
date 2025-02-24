@@ -15,3 +15,5 @@ out/*
 tmp.py
 
 builelib/
+
+*.out.json
