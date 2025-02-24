@@ -1,12 +1,8 @@
-import json
-
 from truzt.secondary_pump_system_model import SecondaryPumpSystem
 
 
-def test_secondary_pump_system_json_serialize():
-    # JSONファイルを読み込む
-    with open("sample/sample_input_v3.json") as file:
-        data = json.load(file)
+def test_secondary_pump_system_json_serialize(v3_test_case_dict):
+    data = v3_test_case_dict
 
     # SecondaryPumpSystemのdictを取得
     spsys_dict = data["SecondaryPumpSystem"]

@@ -1,12 +1,8 @@
-import json
-
 from truzt.hot_water_supply_system_model import HotWaterSupplySystem
 
 
-def test_hot_water_supply_system_json_serialize():
-    # JSONファイルを読み込む
-    with open("sample/sample_input_v3.json") as file:
-        data = json.load(file)
+def test_hot_water_supply_system_json_serialize(v3_test_case_dict):
+    data = v3_test_case_dict
 
     # HotWaterSupplySystemsのdictを取得
     hwss_dict = data["HotwaterSupplySystems"]

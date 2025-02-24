@@ -1,12 +1,8 @@
-import json
-
 from truzt.ventilation_unit_model import VentilationUnit
 
 
-def test_ventilation_unit_json_serialize():
-    # JSONファイルを読み込む
-    with open("sample/sample_input_v3.json") as file:
-        data = json.load(file)
+def test_ventilation_unit_json_serialize(v3_test_case_dict):
+    data = v3_test_case_dict
 
     # VentilationUnitのdictを取得
     vu_dict = data["VentilationUnit"]

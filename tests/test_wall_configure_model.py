@@ -1,12 +1,8 @@
-import json
-
 from truzt.wall_configure_model import WallConfigure
 
 
-def test_wall_configure_json_serialize():
-    # JSONファイルを読み込む
-    with open("sample/sample_input_v3.json") as file:
-        data = json.load(file)
+def test_wall_configure_json_serialize(v3_test_case_dict):
+    data = v3_test_case_dict
 
     # WallConfigureのdictを取得
     wc_dict = data["WallConfigure"]

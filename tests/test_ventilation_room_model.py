@@ -3,10 +3,8 @@ import json
 from truzt.ventilation_room_model import VentilationRoom
 
 
-def test_ventilation_room_json_serialize():
-    # JSONファイルを読み込む
-    with open("sample/sample_input_v3.json") as file:
-        data = json.load(file)
+def test_ventilation_room_json_serialize(v3_test_case_dict):
+    data = v3_test_case_dict
 
     # VentilationRoomのdictを取得
     vr_dict = data["VentilationRoom"]

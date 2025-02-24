@@ -1,12 +1,8 @@
-import json
-
 from truzt.photovoltaic_system_model import PhotovoltaicSystem
 
 
-def test_photovoltaic_system_json_serialize():
-    # JSONファイルを読み込む
-    with open("sample/sample_input_v3.json") as file:
-        data = json.load(file)
+def test_photovoltaic_system_json_serialize(v3_test_case_dict):
+    data = v3_test_case_dict
 
     # PhotovoltaicSystemsのdictを取得
     pvs_dict = data["PhotovoltaicSystems"]

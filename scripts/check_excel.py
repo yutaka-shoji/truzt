@@ -1,6 +1,6 @@
 from openpyxl import load_workbook
 
-wb = load_workbook("sample/sample_input_v3.xlsx")
+wb = load_workbook("sample/sample_v3.xlsx")
 
 # シート一覧を表示
 print("=== シート一覧 ===")

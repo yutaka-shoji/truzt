@@ -20,7 +20,7 @@ from truzt.webpro_model import WebproModel
 
 
 def test_webpro_model_json_serialize():
-    with open("sample/sample_input_v3.json") as file:
+    with open("sample/sample_v3.json") as file:
         wm_dict = json.load(file)
     # WebproModelインスタンスを作成
     wm = WebproModel.model_validate(wm_dict)
@@ -31,7 +31,7 @@ def test_webpro_model_json_serialize():
 
 
 def test_invalid_input():
-    with open("sample/sample_input_v3.json") as file:
+    with open("sample/sample_v3.json") as file:
         wm_dict = json.load(file)
         wm_dict["Building"]["Region"] = 9  # <- 地域区分(1-8)に範囲外の値を入力
     try:
@@ -51,4 +51,5 @@ if __name__ == "__main__":
 ```
 
 ## Contribution
+
 See [docs/CONTRIBUTING.md](https://github.com/yutaka-shoji/truzt/blob/main/docs/CONTRIBUTING.md)
