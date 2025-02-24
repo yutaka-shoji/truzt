@@ -6,6 +6,7 @@ from openpyxl import Workbook, load_workbook
 from truzt.air_conditioning_zone_model import AirConditioningZones
 from truzt.building_model import Building
 from truzt.room_model import Rooms
+from truzt.wall_configure_model import WallConfigures
 
 V2_TEST_CASES = [
     "sample_v2",
@@ -98,3 +99,17 @@ def test_can_convert_v2_wb_to_air_conditioning_zones_model(wb: Workbook, expecte
     zones_dict = zones.model_dump(by_alias=True)
 
     assert dict_equal_ignore_info(zones_dict, expected_data["AirConditioningZone"])
+
+
+@pytest.mark.parametrize("wb, expected_data", get_v2_test_params())
+def test_can_convert_v2_wb_to_wall_configure_model(wb: Workbook, expected_data: dict):
+    """WallConfigureモデルへの変換テスト.
+
+    Args:
+        wb: テスト用のワークブック
+        expected_data: 期待されるデータ（JSON）
+    """
+    wall_configure = WallConfigures.from_workbook(wb, ver="v2")
+    wall_configure_dict = wall_configure.model_dump(by_alias=True)
+
+    assert dict_equal_ignore_info(wall_configure_dict, expected_data["WallConfigure"])

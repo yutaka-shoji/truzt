@@ -2,7 +2,8 @@
 
 from typing import Literal, Optional
 
-from pydantic import Field
+from openpyxl import Workbook
+from pydantic import Field, RootModel
 
 from .model_config import BaseConfigModel
 
@@ -37,7 +38,6 @@ class ElevatorItem(BaseConfigModel):
     info: Optional[str] = None
 
 
-# TODO: このネスト必要?
 class Elevators(BaseConfigModel):
     """Elevators.
 
@@ -46,3 +46,26 @@ class Elevators(BaseConfigModel):
     """
 
     elevator: Optional[list[ElevatorItem]] = None
+
+
+class ElevatorSystems(RootModel):
+    """ElevatorSystem dict.
+
+    Attributes:
+        root: Elevators dict.
+    """
+
+    root: dict[str, Elevators]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "ElevatorSystems":
+        """WorkbookからElevatorSystemsモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, Elevators]: Elevators dict
+        """
+        raise NotImplementedError

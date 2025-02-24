@@ -2,7 +2,8 @@
 
 from typing import Literal, Optional
 
-from pydantic import Field
+from openpyxl import Workbook
+from pydantic import Field, RootModel
 
 from .model_config import BaseConfigModel
 
@@ -117,3 +118,26 @@ class EnvelopeSet(BaseConfigModel):
 
     # TODO: not implemented field serializer and validator yet
     # to convert "有" or "無" to boolean
+
+
+class EnvelopeSets(RootModel):
+    """EnvelopeSet dict.
+
+    Attributes:
+        root: EnvelopeSet dict.
+    """
+
+    root: dict[str, EnvelopeSet]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "EnvelopeSets":
+        """WorkbookからEnvelopeSetsモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, EnvelopeSets]: EnvelopeSet dict
+        """
+        raise NotImplementedError

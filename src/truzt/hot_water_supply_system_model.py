@@ -2,7 +2,8 @@
 
 from typing import Literal, Optional
 
-from pydantic import Field
+from openpyxl import Workbook
+from pydantic import Field, RootModel
 
 from .model_config import BaseConfigModel
 
@@ -85,3 +86,28 @@ class HotWaterSupplySystem(BaseConfigModel):
     solar_system_angle: Optional[float] = Field(None, ge=0.0, le=360.0)
 
     info: Optional[str] = None
+
+
+class HotWaterSupplySystems(RootModel):
+    """HotWaterSupplySystem dict.
+
+    Attributes:
+        root: HotWaterSupplySystem dict.
+    """
+
+    root: dict[str, HotWaterSupplySystem]
+
+    @classmethod
+    def from_workbook(
+        cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3"
+    ) -> "HotWaterSupplySystems":
+        """WorkbookからHotWaterSupplySystemsモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, HotWaterSupplySystem]: HotWaterSupplySystem dict
+        """
+        raise NotImplementedError

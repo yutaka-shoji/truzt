@@ -7,6 +7,9 @@ Classes:
 
 from typing import Literal, Optional
 
+from openpyxl import Workbook
+from pydantic import RootModel
+
 from .model_config import BaseConfigModel
 
 
@@ -32,3 +35,26 @@ class VentilationRoom(BaseConfigModel):
 
     ventilation_type: Optional[Literal["一種換気", "二種換気", "三種換気"]] = None
     ventilation_unit_ref: dict[str, VentilationUnitRef]
+
+
+class VentilationRooms(RootModel):
+    """VentilationRoom dict.
+
+    Attributes:
+        root: VentilationRoom dict.
+    """
+
+    root: dict[str, VentilationRoom]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "VentilationRooms":
+        """WorkbookからVentilationRoomsモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, VentilationRoom]: VentilationRoom dict
+        """
+        raise NotImplementedError

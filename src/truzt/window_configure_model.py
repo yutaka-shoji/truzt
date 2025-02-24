@@ -7,7 +7,8 @@ Classes:
 
 from typing import Literal, Optional
 
-from pydantic import ConfigDict, Field
+from openpyxl import Workbook
+from pydantic import ConfigDict, Field, RootModel
 from pydantic.alias_generators import to_camel
 
 from .model_config import BaseConfigModel
@@ -94,3 +95,26 @@ class WindowConfigure(BaseConfigModel):
         None,
         alias="Info",  # NOTE: for builelib compatibility
     )
+
+
+class WindowConfigures(RootModel):
+    """WindowConfigure dict.
+
+    Attributes:
+        root: WindowConfigure dict.
+    """
+
+    root: dict[str, WindowConfigure]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "WindowConfigures":
+        """WorkbookからWindowConfigureモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, WindowConfigure]: WindowConfigure dict
+        """
+        raise NotImplementedError

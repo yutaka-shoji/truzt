@@ -2,7 +2,8 @@
 
 from typing import Literal, Optional, Union
 
-from pydantic import Field, field_serializer, field_validator
+from openpyxl import Workbook
+from pydantic import Field, RootModel, field_serializer, field_validator
 
 from .model_config import BaseConfigModel
 
@@ -120,3 +121,26 @@ class CogenerationSystem(BaseConfigModel):
         else:
             str_arg = "無"
         return str_arg
+
+
+class CogenerationSystems(RootModel):
+    """CogenerationSystem dict.
+
+    Attributes:
+        root: CogenerationSystem dict.
+    """
+
+    root: dict[str, CogenerationSystem]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "CogenerationSystems":
+        """WorkbookからCogenerationSystemsモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, CogenerationSystem]: CogenerationSystem dict
+        """
+        raise NotImplementedError

@@ -8,25 +8,25 @@ from typing import Any, Optional
 
 from pydantic import Field
 
-from .air_conditioning_zone_model import AirConditioningZone
-from .air_handling_system_model import AirHandlingSystem
+from .air_conditioning_zone_model import AirConditioningZones
+from .air_handling_system_model import AirHandlingSystems
 from .building_model import Building
-from .cogeneration_system_model import CogenerationSystem
-from .elevator_model import Elevators
-from .envelope_set_model import EnvelopeSet
-from .heat_source_system_model import HeatSourceSystem
-from .hot_water_room_model import HotWaterRoom
-from .hot_water_supply_system_model import HotWaterSupplySystem
-from .lighting_room_model import LightingRoom
+from .cogeneration_system_model import CogenerationSystems
+from .elevator_model import ElevatorSystems
+from .envelope_set_model import EnvelopeSets
+from .heat_source_system_model import HeatSourceSystems
+from .hot_water_room_model import HotWaterRooms
+from .hot_water_supply_system_model import HotWaterSupplySystems
+from .lighting_room_model import LightingRooms
 from .model_config import BaseConfigModel
-from .photovoltaic_system_model import PhotovoltaicSystem
+from .photovoltaic_system_model import PhotovoltaicSystems
 from .room_model import Rooms
-from .secondary_pump_system_model import SecondaryPumpSystem
-from .shading_configure_model import ShadingConfigure
-from .ventilation_room_model import VentilationRoom
-from .ventilation_unit_model import VentilationUnit
-from .wall_configure_model import WallConfigure
-from .window_configure_model import WindowConfigure
+from .secondary_pump_system_model import SecondaryPumpSystems
+from .shading_configure_model import ShadingConfigures
+from .ventilation_room_model import VentilationRooms
+from .ventilation_unit_model import VentilationUnits
+from .wall_configure_model import WallConfigures
+from .window_configure_model import WindowConfigures
 
 
 class WebproModel(BaseConfigModel):
@@ -59,52 +59,52 @@ class WebproModel(BaseConfigModel):
     rooms: Optional[Rooms] = Field(
         None,
     )
-    air_conditioning_zone: Optional[dict[str, AirConditioningZone]] = Field(
+    air_conditioning_zone: Optional[AirConditioningZones] = Field(
         None,
     )
-    wall_configure: Optional[dict[str, WallConfigure]] = Field(
+    wall_configure: Optional[WallConfigures] = Field(
         None,
     )
-    window_configure: Optional[dict[str, WindowConfigure]] = Field(
+    window_configure: Optional[WindowConfigures] = Field(
         None,
     )
-    envelope_set: Optional[dict[str, EnvelopeSet]] = Field(
+    envelope_set: Optional[EnvelopeSets] = Field(
         None,
     )
-    shading_configure: Optional[dict[str, ShadingConfigure]] = Field(
+    shading_configure: Optional[ShadingConfigures] = Field(
         None,
     )
-    heatsource_system: Optional[dict[str, HeatSourceSystem]] = Field(
+    heatsource_system: Optional[HeatSourceSystems] = Field(
         None,
     )
-    secondary_pump_system: Optional[dict[str, SecondaryPumpSystem]] = Field(
+    secondary_pump_system: Optional[SecondaryPumpSystems] = Field(
         None,
     )
-    air_handling_system: Optional[dict[str, AirHandlingSystem]] = Field(
+    air_handling_system: Optional[AirHandlingSystems] = Field(
         None,
     )
-    ventilation_room: Optional[dict[str, VentilationRoom]] = Field(
+    ventilation_room: Optional[VentilationRooms] = Field(
         None,
     )
-    ventilation_unit: Optional[dict[str, VentilationUnit]] = Field(
+    ventilation_unit: Optional[VentilationUnits] = Field(
         None,
     )
-    lighting_systems: Optional[dict[str, LightingRoom]] = Field(
+    lighting_systems: Optional[LightingRooms] = Field(
         None,
     )
-    hotwater_room: Optional[dict[str, HotWaterRoom]] = Field(
+    hotwater_room: Optional[HotWaterRooms] = Field(
         None,
     )
-    hotwater_supply_systems: Optional[dict[str, HotWaterSupplySystem]] = Field(
+    hotwater_supply_systems: Optional[HotWaterSupplySystems] = Field(
         None,
     )
-    elevators: Optional[dict[str, Elevators]] = Field(
+    elevators: Optional[ElevatorSystems] = Field(
         None,
     )
-    photovoltaic_systems: Optional[dict[str, PhotovoltaicSystem]] = Field(
+    photovoltaic_systems: Optional[PhotovoltaicSystems] = Field(
         None,
     )
-    cogeneration_systems: Optional[dict[str, CogenerationSystem]] = Field(
+    cogeneration_systems: Optional[CogenerationSystems] = Field(
         None,
     )
     # TODO: builelib SPシート未対応

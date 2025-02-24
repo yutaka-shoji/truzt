@@ -7,7 +7,8 @@ Classes:
 
 from typing import Literal, Optional
 
-from pydantic import Field
+from openpyxl import Workbook
+from pydantic import Field, RootModel
 
 from .model_config import BaseConfigModel
 
@@ -112,3 +113,26 @@ class WallConfigure(BaseConfigModel):
     )
 
     info: Optional[str] = None
+
+
+class WallConfigures(RootModel):
+    """WallConfigure dict.
+
+    Attributes:
+        root: WallConfigure dict.
+    """
+
+    root: dict[str, WallConfigure]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "WallConfigures":
+        """WorkbookからWallConfigureモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, WallConfigure]: 外壁構成
+        """
+        raise NotImplementedError

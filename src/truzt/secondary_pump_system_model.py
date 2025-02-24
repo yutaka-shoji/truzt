@@ -2,7 +2,8 @@
 
 from typing import Literal, Optional
 
-from pydantic import Field
+from openpyxl import Workbook
+from pydantic import Field, RootModel
 
 from .model_config import BaseConfigModel
 
@@ -82,3 +83,26 @@ class SecondaryPumpSystem(BaseConfigModel):
         None,
         alias="暖房",  # NOTE: for builelib compatibility
     )
+
+
+class SecondaryPumpSystems(RootModel):
+    """SecondaryPumpSystem dict.
+
+    Attributes:
+        root: SecondaryPumpSystem dict.
+    """
+
+    root: dict[str, SecondaryPumpSystem]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "SecondaryPumpSystems":
+        """WorkbookからSecondaryPumpSystemsモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, SecondaryPumpSystem]: SecondaryPumpSystem dict
+        """
+        raise NotImplementedError

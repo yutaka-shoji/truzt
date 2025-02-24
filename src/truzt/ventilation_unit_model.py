@@ -6,7 +6,8 @@ Classes:
 
 from typing import Literal, Optional, Union
 
-from pydantic import Field
+from openpyxl import Workbook
+from pydantic import Field, RootModel
 
 from .model_config import BaseConfigModel
 
@@ -55,3 +56,26 @@ class VentilationUnit(BaseConfigModel):
         alias="AC_PumpPower",  # NOTE: for builelib compatibility
     )
     info: Optional[str]
+
+
+class VentilationUnits(RootModel):
+    """VentilationUnit dict.
+
+    Attributes:
+        root: VentilationUnit dict.
+    """
+
+    root: dict[str, VentilationUnit]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "VentilationUnits":
+        """WorkbookからVentilationUnitsモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, VentilationUnit]: VentilationUnit dict
+        """
+        raise NotImplementedError
