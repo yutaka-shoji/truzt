@@ -69,6 +69,7 @@ if __name__ == "__main__":
 | `PhotovoltaicSystem`                  | ⬜  | ⬜  | **7-1) 太陽光発電**               |
 | `CogenerationSystem`                  | ⬜  | ⬜  | **7-3) コージェネレーション設備** |
 | _builelib_ **not supported?**         | ⬜  | ⬜  | **8) 非空調外皮**                 |
+| `WebproModel`                         | ⬜  | ⬜  | **モデル横断で影響する部分**      |
 
 ## Contribution
 
