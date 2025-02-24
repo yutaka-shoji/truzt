@@ -70,6 +70,7 @@ if __name__ == "__main__":
 | `CogenerationSystem`                  | ⬜  | ⬜  | **7-3) コージェネレーション設備** |
 | _builelib_ **not supported?**         | ⬜  | ⬜  | **8) 非空調外皮**                 |
 | `WebproModel`                         | ⬜  | ⬜  | **モデル横断で影響する部分**      |
+| **for SP sheet...**                   | ⬜  | ⬜  | **builelib sp sheets...**         |
 
 ## Contribution
 
