@@ -2,6 +2,7 @@
 
 from typing import Annotated, Literal, Optional, Union
 
+from openpyxl import Workbook
 from pydantic import Field, RootModel, field_serializer, field_validator
 
 from .model_config import BaseConfigModel
@@ -97,3 +98,63 @@ class AirConditioningZones(RootModel):
     """
 
     root: dict[str, AirConditioningZone]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "AirConditioningZones":
+        """Create AirConditioningZones instance from workbook.
+
+        Args:
+            wb: WEBPRO入力シートのワークブックインスタンス
+            ver: WEBPROバージョン ("v2" or "v3")
+
+        Returns:
+            AirConditioningZones: 空調ゾーン情報
+        """
+        ws = wb["2-1) 空調ゾーン"]
+        zones: dict[str, AirConditioningZone] = {}
+
+        # セル参照の定義
+        if ver == "v2":
+            ref = {
+                "start_row": 11,
+                "floor": "H",  # 7列目
+                "zone": "I",  # 8列目
+                "ahu_in": "J",  # 9列目
+                "ahu_out": "K",  # 10列目
+                "info": "L",  # 11列目
+            }
+        else:
+            # TODO: v3のセル参照定義
+            raise NotImplementedError
+
+        for row in range(ref["start_row"], ws.max_row + 1):
+            floor = ws[f"{ref['floor']}{row}"].value
+            zone = ws[f"{ref['zone']}{row}"].value
+
+            # floor と zoneが両方ともemptyの場合はforループを抜ける
+            if floor is None and zone is None:
+                break
+
+            # 空行をスキップ
+            if floor is None or zone is None or floor == "" or zone == "":
+                continue
+
+            # 数値の空調ゾーン名を文字列に変換
+            if isinstance(zone, (int, float)):
+                zone = str(int(zone))
+
+            # キーの生成（floor_zone）
+            key = f"{floor}_{zone}"
+
+            # ゾーン情報の生成
+            zones[key] = AirConditioningZone(
+                is_natural_ventilation=False,
+                is_simultaneous_supply="無",
+                ahu_cooling_inside_load=ws[f"{ref['ahu_in']}{row}"].value or "",
+                ahu_cooling_outdoor_load=ws[f"{ref['ahu_out']}{row}"].value or "",
+                ahu_heating_inside_load=ws[f"{ref['ahu_in']}{row}"].value or "",
+                ahu_heating_outdoor_load=ws[f"{ref['ahu_out']}{row}"].value or "",
+                info=ws[f"{ref['info']}{row}"].value,
+            )
+
+        return cls(root=zones)

@@ -3,6 +3,7 @@ import json
 import pytest
 from openpyxl import Workbook, load_workbook
 
+from truzt.air_conditioning_zone_model import AirConditioningZones
 from truzt.building_model import Building
 from truzt.room_model import Rooms
 
@@ -83,3 +84,17 @@ def test_can_convert_v2_wb_to_rooms_model(wb: Workbook, expected_data: dict):
     rooms_dict = rooms.model_dump(by_alias=True)
 
     assert dict_equal_ignore_info(rooms_dict, expected_data["Rooms"])
+
+
+@pytest.mark.parametrize("wb, expected_data", get_v2_test_params())
+def test_can_convert_v2_wb_to_air_conditioning_zones_model(wb: Workbook, expected_data: dict):
+    """AirConditioningZonesモデルへの変換テスト.
+
+    Args:
+        wb: テスト用のワークブック
+        expected_data: 期待されるデータ（JSON）
+    """
+    zones = AirConditioningZones.from_workbook(wb, ver="v2")
+    zones_dict = zones.model_dump(by_alias=True)
+
+    assert dict_equal_ignore_info(zones_dict, expected_data["AirConditioningZone"])
