@@ -3,6 +3,7 @@ import json
 import pytest
 from openpyxl import load_workbook
 from pydantic import ValidationError
+
 from truzt.room_model import Room, Rooms
 
 
