@@ -1,6 +1,6 @@
 [project]
 name = "truzt"
-version = "0.0.1"
+version = "0.0.4-alpha"
 description = "truzt --Building Data Model--"
 authors = [{ name = "Shoji, Yutaka", email = "ytk.shoji@gmail.com" }]
 dependencies = ["pydantic>=2.8.2", "openpyxl>=3.1.5"]
@@ -24,6 +24,7 @@ dev = [
     "mkdocs-gen-files>=0.5.0",
     "mkdocs-literate-nav>=0.6.1",
     "mkdocs-section-index>=0.3.9",
+    "pytest-cov>=6.0.0",
 ]
 
 [tool.hatch.metadata]
@@ -35,6 +36,7 @@ packages = ["src/truzt"]
 # ----------ruff linter/formatter----------
 [tool.ruff]
 line-length = 100
+extend-exclude = ["builelib/", ".clinerules"]
 
 [tool.ruff.lint]
 select = [
@@ -54,7 +56,7 @@ select = [
     'C4',     # flake8-comprehensions
     'PYI006', # flake8-pyi
 ]
-ignore = ['ANN101', 'ANN102', 'ANN401']
+ignore = ['ANN401', "T201", "D100"]
 pydocstyle = { convention = 'google' }
 
 [tool.ruff.lint.per-file-ignores]
@@ -68,3 +70,4 @@ docstring-code-format = true
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
+ignore = ["builelib/**", ".clinerules"]

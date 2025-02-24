@@ -24,3 +24,10 @@ class BaseConfigModel(BaseModel):
         if v == "":
             return None
         return v
+
+    @field_validator("*", mode="before")
+    @classmethod
+    def _split_str(cls, v: Any) -> Any:
+        if isinstance(v, str):
+            return v.strip()
+        return v

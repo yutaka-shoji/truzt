@@ -2,7 +2,8 @@
 
 from typing import Literal, Optional, Union
 
-from pydantic import Field, field_serializer, field_validator
+from openpyxl import Workbook
+from pydantic import Field, RootModel, field_serializer, field_validator
 
 from .model_config import BaseConfigModel
 
@@ -175,3 +176,26 @@ class AirHandlingSystem(BaseConfigModel):
         else:
             str_arg = "無"
         return str_arg
+
+
+class AirHandlingSystems(RootModel):
+    """AirHandlingSystem dict.
+
+    Attributes:
+        root: AirHandlingSystem dict.
+    """
+
+    root: dict[str, AirHandlingSystem]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "AirHandlingSystems":
+        """WorkbookからAirHandlingSystemsモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, AirHandlingSystem]: AirHandlingSystem dict
+        """
+        raise NotImplementedError

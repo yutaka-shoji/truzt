@@ -1,8 +1,9 @@
 """Module for defining the ShadingConfigure model."""
 
-from typing import Optional
+from typing import Literal, Optional
 
-from pydantic import Field
+from openpyxl import Workbook
+from pydantic import Field, RootModel
 
 from .model_config import BaseConfigModel
 
@@ -51,3 +52,26 @@ class ShadingConfigure(BaseConfigModel):
     zy_plus: Optional[float] = None
     zy_minus: Optional[float] = None
     info: Optional[str] = None
+
+
+class ShadingConfigures(RootModel):
+    """ShadingConfigure dict.
+
+    Attributes:
+        root: ShadingConfigure dict.
+    """
+
+    root: dict[str, ShadingConfigure]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "ShadingConfigures":
+        """WorkbookからShadingConfiguresモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, ShadingConfigures]: ShadingConfigure dict
+        """
+        raise NotImplementedError

@@ -2,7 +2,8 @@
 
 from typing import Literal, Optional, Union
 
-from pydantic import ConfigDict, Field
+from openpyxl import Workbook
+from pydantic import ConfigDict, Field, RootModel
 from pydantic.alias_generators import to_camel
 
 from .model_config import BaseConfigModel
@@ -103,3 +104,26 @@ class LightingRoom(BaseConfigModel):
     unit_height: Optional[float] = Field(gt=0.0)
     room_index: Optional[float] = Field(gt=0.0)
     lighting_unit: dict[str, LightingUnit]
+
+
+class LightingRooms(RootModel):
+    """LightingRoom dict.
+
+    Attributes:
+        root: LightingRoom dict.
+    """
+
+    root: dict[str, LightingRoom]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "LightingRooms":
+        """WorkbookからLightingRoomsモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, LightingRoom]: LightingRoom dict
+        """
+        raise NotImplementedError

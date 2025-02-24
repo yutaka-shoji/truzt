@@ -17,7 +17,7 @@ class AirConditioningZone(BaseConfigModel):
         ahu_cooling_inside_load: 空調機群名称 冷房室負荷処理
         ahu_cooling_outdoor_load: 空調機群名称 冷房外気負荷処理
         ahu_heating_inside_load: 空調機群名称 暖房室負荷処理
-        ahu_heeating_outdoor_load: 空調機群名称 暖房外気負荷処理
+        ahu_heating_outdoor_load: 空調機群名称 暖房外気負荷処理
         info:
     """
 
@@ -59,7 +59,7 @@ class AirConditioningZone(BaseConfigModel):
         ),
     ]
 
-    ahu_heeating_outdoor_load: Annotated[
+    ahu_heating_outdoor_load: Annotated[
         str,
         Field(
             alias="AHU_heating_outdoorLoad",  # NOTE: for builelib compatibility
@@ -104,57 +104,57 @@ class AirConditioningZones(RootModel):
         """Create AirConditioningZones instance from workbook.
 
         Args:
-            wb: WEBPRO input workbook instance.
-            ver: WEBPRO input workbook version (v2 or v3).
+            wb: WEBPRO入力シートのワークブックインスタンス
+            ver: WEBPROバージョン ("v2" or "v3")
+
+        Returns:
+            AirConditioningZones: 空調ゾーン情報
         """
         ws = wb["2-1) 空調ゾーン"]
+        zones: dict[str, AirConditioningZone] = {}
 
+        # セル参照の定義
         if ver == "v2":
-            address = {
-                "min_row": 11,
-                "floor": "H",
-                "name": "I",
-                "info": "M",
-            }
-        elif ver == "v3":
-            address = {
-                "min_row": 11,
-                "floor": "H",
-                "name": "I",
-                # "is_natural_ventilation": "C",
-                # "is_simultaneous_supply": "D",
-                "ahu_cooling_inside_load": "J",
-                "ahu_cooling_outdoor_load": "K",
-                "ahu_heating_inside_load": "J",
-                "ahu_heeating_outdoor_load": "K",
-                "info": "L",
+            ref = {
+                "start_row": 11,
+                "floor": "H",  # 7列目
+                "zone": "I",  # 8列目
+                "ahu_in": "J",  # 9列目
+                "ahu_out": "K",  # 10列目
+                "info": "L",  # 11列目
             }
         else:
-            raise ValueError(f"Invalid version: {ver}")
+            # TODO: v3のセル参照定義
+            raise NotImplementedError
 
-        air_conditioning_zones = {}
-        for i_row in range(address["min_row"], 999):
-            # break if the first cell is empty or white space
-            if (
-                ws[f"{address['floor']}{i_row}"].value is None
-                or not str(ws[f"{address['floor']}{i_row}"].value).strip()
-            ):
+        for row in range(ref["start_row"], ws.max_row + 1):
+            floor = ws[f"{ref['floor']}{row}"].value
+            zone = ws[f"{ref['zone']}{row}"].value
+
+            # floor と zoneが両方ともemptyの場合はforループを抜ける
+            if floor is None and zone is None:
                 break
 
-            floor = ws[f"{address['floor']}{i_row}"].value
-            name = ws[f"{address['name']}{i_row}"].value
-            room_key = f"{floor}_{name}"
+            # 空行をスキップ
+            if floor is None or zone is None or floor == "" or zone == "":
+                continue
 
-            air_conditioning_zones[room_key] = AirConditioningZone(
+            # 数値の空調ゾーン名を文字列に変換
+            if isinstance(zone, (int, float)):
+                zone = str(int(zone))
+
+            # キーの生成（floor_zone）
+            key = f"{floor}_{zone}"
+
+            # ゾーン情報の生成
+            zones[key] = AirConditioningZone(
                 is_natural_ventilation=False,
-                is_simultaneous_supply="無",  # TODO: 暫定
-                ahu_cooling_inside_load=ws[f"{address['ahu_cooling_inside_load']}{i_row}"].value,
-                ahu_cooling_outdoor_load=ws[f"{address['ahu_cooling_outdoor_load']}{i_row}"].value,
-                ahu_heating_inside_load=ws[f"{address['ahu_heating_inside_load']}{i_row}"].value,
-                ahu_heeating_outdoor_load=ws[
-                    f"{address['ahu_heeating_outdoor_load']}{i_row}"
-                ].value,
-                info=ws[f"{address['info']}{i_row}"].value,
+                is_simultaneous_supply="無",
+                ahu_cooling_inside_load=ws[f"{ref['ahu_in']}{row}"].value or "",
+                ahu_cooling_outdoor_load=ws[f"{ref['ahu_out']}{row}"].value or "",
+                ahu_heating_inside_load=ws[f"{ref['ahu_in']}{row}"].value or "",
+                ahu_heating_outdoor_load=ws[f"{ref['ahu_out']}{row}"].value or "",
+                info=ws[f"{ref['info']}{row}"].value,
             )
 
-        return cls(root=air_conditioning_zones)
+        return cls(root=zones)

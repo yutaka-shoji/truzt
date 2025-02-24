@@ -1,9 +1,9 @@
 """Module for defining the Building model and related classes."""
 
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Any, Literal, Optional
 
 from openpyxl import Workbook
-from pydantic import Field, field_serializer
+from pydantic import Field, field_serializer, field_validator
 
 from .model_config import BaseConfigModel
 
@@ -72,6 +72,21 @@ class Building(BaseConfigModel):
     @field_serializer("region")
     def _serialize_region(self, region: int) -> str:
         return str(region)
+
+    @field_validator("region", mode="before")
+    @classmethod
+    def _strip_region(cls, region: Any) -> int:
+        if isinstance(region, str):
+            region = region.strip()
+            # regionが "n地域" の形式の場合、nを取り出す
+            if region.endswith("地域"):
+                return int(region[:-2])
+            else:
+                return int(region)
+        elif isinstance(region, int):
+            return region
+        else:
+            raise ValueError(f"Invalid region: {region}")
 
     @classmethod
     def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "Building":

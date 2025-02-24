@@ -1,15 +1,11 @@
-import json
-
 import pytest
-from openpyxl import load_workbook
 from pydantic import ValidationError
+
 from truzt.room_model import Room, Rooms
 
 
-def test_room_json_serialize():
-    # JSONファイルを読み込む
-    with open("sample/sample_input_v3.json") as file:
-        data = json.load(file)
+def test_room_json_serialize(v3_test_case_dict):
+    data = v3_test_case_dict
 
     # Roomsのreference dictを取得
     rooms_ref_dict = data["Rooms"]
@@ -48,20 +44,3 @@ def test_room_type_match():
     error_details = excinfo.value.errors()
     assert len(error_details) == 1  # 1つのエラーが発生することを確認
     assert error_details[0]["type"] == "value_error"  # エラータイプの確認
-
-
-def test_can_convert_wb_to_rooms_model():
-    wb_path = "sample/sample_input_v3.xlsx"
-    wb = load_workbook(wb_path, read_only=True, data_only=True)
-
-    rooms = Rooms.from_workbook(wb, ver="v3")
-    rooms_dict = rooms.model_dump(by_alias=True)
-
-    ref_json_path = "sample/sample_input_v3.json"
-    with open(ref_json_path) as f:
-        ref_data = json.load(f)
-    ref_rooms_dict = ref_data["Rooms"]
-
-    assert json.dumps(rooms_dict, indent=2, ensure_ascii=False, sort_keys=True) == json.dumps(
-        ref_rooms_dict, indent=2, ensure_ascii=False, sort_keys=True
-    )

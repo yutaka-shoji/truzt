@@ -13,3 +13,7 @@ uv.lock
 out/*
 
 tmp.py
+
+builelib/
+
+*.out.json

@@ -2,7 +2,8 @@
 
 from typing import Literal, Optional
 
-from pydantic import Field
+from openpyxl import Workbook
+from pydantic import Field, RootModel
 
 from .model_config import BaseConfigModel
 
@@ -133,3 +134,26 @@ class HeatSourceSystem(BaseConfigModel):
         None,
         alias="暖房(蓄熱)",
     )
+
+
+class HeatSourceSystems(RootModel):
+    """HeatSourceSystem dict.
+
+    Attributes:
+        root: HeatSourceSystem dict.
+    """
+
+    root: dict[str, HeatSourceSystem]
+
+    @classmethod
+    def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "HeatSourceSystems":
+        """WorkbookからHeatSourceSystemsモデルを生成する.
+
+        Args:
+            wb: Workbook
+            ver: WEBPRO input workbook version (v2 or v3).
+
+        Returns:
+            dict[str, HeatsourceSystem]: HeatSourceSystem dict
+        """
+        raise NotImplementedError

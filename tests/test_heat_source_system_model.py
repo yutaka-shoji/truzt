@@ -1,12 +1,8 @@
-import json
-
 from truzt.heat_source_system_model import HeatSourceSystem
 
 
-def test_heat_source_system_model_json_serialize():
-    # JSONファイルを読み込む
-    with open("sample/sample_input_v3.json") as file:
-        data = json.load(file)
+def test_heat_source_system_model_json_serialize(v3_test_case_dict):
+    data = v3_test_case_dict
 
     # HeatsourceSystemのdictを取得
     hsys_dict = data["HeatsourceSystem"]

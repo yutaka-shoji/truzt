@@ -1,12 +1,8 @@
-import json
-
 from truzt.cogeneration_system_model import CogenerationSystem
 
 
-def test_cogeneration_system_json_serialize():
-    # JSONファイルを読み込む
-    with open("sample/sample_input_v3.json") as file:
-        data = json.load(file)
+def test_cogeneration_system_json_serialize(v3_test_case_dict):
+    data = v3_test_case_dict
 
     # CogenerationSystemのdictを取得
     cgs_dict = data["CogenerationSystems"]

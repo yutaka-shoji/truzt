@@ -1,12 +1,9 @@
-import json
-
 from truzt.webpro_model import WebproModel
 
 
-def test_webpro_model_json_serialize():
-    # JSONファイルを読み込む
-    with open("sample/sample_input_v3.json") as file:
-        wm_dict = json.load(file)
+def test_webpro_model_json_serialize(v3_test_case_dict):
+    """WebproModelのシリアライズのテスト."""
+    wm_dict = v3_test_case_dict
 
     # WebproModelインスタンスを作成
     wm = WebproModel.model_validate(wm_dict)

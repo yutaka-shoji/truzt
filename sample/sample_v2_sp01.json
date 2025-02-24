@@ -2595,6 +2595,12 @@
           "conductivity": null,
           "thickness": 150.0,
           "Info": null
+        },
+        {
+          "materialID": "土壌",
+          "conductivity": null,
+          "thickness": null,
+          "Info": null
         }
       ]
     }
@@ -3155,16 +3161,16 @@
             "Number": 1.0,
             "RatedWaterFlowRate": 89.0,
             "RatedPowerConsumption": 7.5,
-            "ContolType": "定流量制御",
-            "MinOpeningRate": null,
+            "ContolType": "特殊な流量制御",
+            "MinOpeningRate": 20.0,
             "Info": null
           },
           {
             "Number": 1.0,
             "RatedWaterFlowRate": 89.0,
             "RatedPowerConsumption": 7.5,
-            "ContolType": "定流量制御",
-            "MinOpeningRate": null,
+            "ContolType": "特殊な流量制御",
+            "MinOpeningRate": 20.0,
             "Info": null
           }
         ]
@@ -3177,16 +3183,16 @@
             "Number": 1.0,
             "RatedWaterFlowRate": 89.0,
             "RatedPowerConsumption": 7.5,
-            "ContolType": "定流量制御",
-            "MinOpeningRate": null,
+            "ContolType": "特殊な流量制御",
+            "MinOpeningRate": 20.0,
             "Info": null
           },
           {
             "Number": 1.0,
             "RatedWaterFlowRate": 89.0,
             "RatedPowerConsumption": 7.5,
-            "ContolType": "定流量制御",
-            "MinOpeningRate": null,
+            "ContolType": "特殊な流量制御",
+            "MinOpeningRate": 20.0,
             "Info": null
           }
         ]
@@ -3647,8 +3653,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 5.2,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -3677,8 +3683,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 5.2,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -3707,8 +3713,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 7.7,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -3737,8 +3743,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 7.0,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -3767,8 +3773,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 7.7,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -3797,8 +3803,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 7.0,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -3827,8 +3833,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 7.7,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -3857,8 +3863,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 7.0,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -3887,8 +3893,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 7.7,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -3917,8 +3923,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 7.0,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -3947,8 +3953,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 7.7,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -3977,8 +3983,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 7.0,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -4007,8 +4013,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 9.7,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -4037,8 +4043,8 @@
           "FanType": null,
           "FanAirVolume": null,
           "FanPowerConsumption": 7.7,
-          "FanControlType": "定風量制御",
-          "FanMinOpeningRate": null,
+          "FanControlType": "特殊な風量制御",
+          "FanMinOpeningRate": 30.0,
           "AirHeatExchangeRatioCooling": null,
           "AirHeatExchangeRatioHeating": null,
           "AirHeatExchangerEffectiveAirVolumeRatio": null,
@@ -4057,7 +4063,7 @@
       "VentilationUnitRef": {
         "EF-1": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4066,7 +4072,7 @@
       "VentilationUnitRef": {
         "EF-2": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4075,7 +4081,7 @@
       "VentilationUnitRef": {
         "EF-3": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4084,7 +4090,7 @@
       "VentilationUnitRef": {
         "EF-4": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4093,7 +4099,7 @@
       "VentilationUnitRef": {
         "EF-5": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4102,11 +4108,11 @@
       "VentilationUnitRef": {
         "EF-6": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         },
         "SF-6": {
           "UnitType": "給気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4115,7 +4121,7 @@
       "VentilationUnitRef": {
         "EF-7": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4124,11 +4130,11 @@
       "VentilationUnitRef": {
         "EF-8": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         },
         "SF-8": {
           "UnitType": "給気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4137,7 +4143,7 @@
       "VentilationUnitRef": {
         "EF-2-1": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4146,7 +4152,7 @@
       "VentilationUnitRef": {
         "EF-2-2": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4155,7 +4161,7 @@
       "VentilationUnitRef": {
         "EF-2-3": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4164,7 +4170,7 @@
       "VentilationUnitRef": {
         "EF-2-4": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4173,7 +4179,7 @@
       "VentilationUnitRef": {
         "EF-2-5": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4182,7 +4188,7 @@
       "VentilationUnitRef": {
         "EF-3-1": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4191,7 +4197,7 @@
       "VentilationUnitRef": {
         "EF-3-2": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4200,7 +4206,7 @@
       "VentilationUnitRef": {
         "EF-3-3": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4209,7 +4215,7 @@
       "VentilationUnitRef": {
         "EF-3-4": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4218,7 +4224,7 @@
       "VentilationUnitRef": {
         "EF-3-5": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4227,7 +4233,7 @@
       "VentilationUnitRef": {
         "EF-4-1": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4236,7 +4242,7 @@
       "VentilationUnitRef": {
         "EF-4-2": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4245,7 +4251,7 @@
       "VentilationUnitRef": {
         "EF-4-3": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4254,7 +4260,7 @@
       "VentilationUnitRef": {
         "EF-4-4": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4263,7 +4269,7 @@
       "VentilationUnitRef": {
         "EF-4-5": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4272,7 +4278,7 @@
       "VentilationUnitRef": {
         "EF-5-1": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4281,7 +4287,7 @@
       "VentilationUnitRef": {
         "EF-5-2": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4290,7 +4296,7 @@
       "VentilationUnitRef": {
         "EF-5-3": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4299,7 +4305,7 @@
       "VentilationUnitRef": {
         "EF-5-4": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4308,7 +4314,7 @@
       "VentilationUnitRef": {
         "EF-5-5": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4317,7 +4323,7 @@
       "VentilationUnitRef": {
         "EF-6-1": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4326,7 +4332,7 @@
       "VentilationUnitRef": {
         "EF-6-2": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4335,7 +4341,7 @@
       "VentilationUnitRef": {
         "EF-6-3": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4344,7 +4350,7 @@
       "VentilationUnitRef": {
         "EF-6-4": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4353,7 +4359,7 @@
       "VentilationUnitRef": {
         "EF-6-5": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4362,7 +4368,7 @@
       "VentilationUnitRef": {
         "EF-7-1": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4371,7 +4377,7 @@
       "VentilationUnitRef": {
         "EF-7-2": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4380,7 +4386,7 @@
       "VentilationUnitRef": {
         "EF-7-3": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4389,7 +4395,7 @@
       "VentilationUnitRef": {
         "EF-7-4": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4398,7 +4404,7 @@
       "VentilationUnitRef": {
         "EF-7-5": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         }
       }
     },
@@ -4407,15 +4413,15 @@
       "VentilationUnitRef": {
         "PAC1": {
           "UnitType": "空調",
-          "Info": null
+          "Info": ""
         },
         "PAC1_fan1": {
           "UnitType": "排気",
-          "Info": null
+          "Info": ""
         },
         "PAC1_fan2": {
           "UnitType": "給気",
-          "Info": null
+          "Info": ""
         }
       }
     }
@@ -8117,5 +8123,24 @@
       "Info": null
     }
   },
-  "SpecialInputData": {}
+  "SpecialInputData": {
+    "flow_control": {
+      "特殊な流量制御": {
+        "Type": "任意評定",
+        "a4": 0.0,
+        "a3": 0.0,
+        "a2": 1.0,
+        "a1": 0.0,
+        "a0": 0.0
+      },
+      "特殊な風量制御": {
+        "Type": "任意評定",
+        "a4": 0.0,
+        "a3": 1.0,
+        "a2": 0.0,
+        "a1": 0.0,
+        "a0": 0.0
+      }
+    }
+  }
 }
