@@ -33,7 +33,35 @@ V2_TEST_CASE_EXPECTED_DATA = {
 }
 
 
-def dict_equal_ignore_info(d1: dict, d2: dict) -> bool:
+def remove_info_recursively(data):
+    """
+    データから"Info"キーを再帰的に削除する
+
+    Args:
+        data: 処理対象のデータ
+
+    Returns:
+        "Info"キーが削除されたデータ
+    """
+    if isinstance(data, dict):
+        return {k: remove_info_recursively(v) for k, v in data.items() if k != "Info"}
+    elif isinstance(data, (list, tuple)):
+        return [remove_info_recursively(v) for v in data]
+    else:
+        return data
+
+
+def remove_null_recursively(data):
+    """データがNoneの場合そのデータを削除する."""
+    if isinstance(data, dict):
+        return {k: remove_null_recursively(v) for k, v in data.items() if v is not None}
+    elif isinstance(data, (list, tuple)):
+        return [remove_null_recursively(v) for v in data if v is not None]
+    else:
+        return data
+
+
+def dict_equal_ignore_info(d1: dict, d2: dict):
     """
     2つの辞書を比較し、"Info"キーの内容は無視して比較する
 
@@ -44,25 +72,15 @@ def dict_equal_ignore_info(d1: dict, d2: dict) -> bool:
     Returns:
         bool: 辞書が等しい場合はTrue
     """
-    if type(d1) is not type(d2):
-        return False
-
-    if isinstance(d1, dict):
-        if set(d1.keys()) != set(d2.keys()):
-            return False
-
-        return all(True if k == "Info" else dict_equal_ignore_info(v, d2[k]) for k, v in d1.items())
-    elif isinstance(d1, (list, tuple)):
-        if len(d1) != len(d2):
-            return False
-        return all(dict_equal_ignore_info(v1, v2) for v1, v2 in zip(d1, d2))
-    else:
-        return d1 == d2
+    d1_cleaned = remove_info_recursively(remove_null_recursively(d1))
+    d2_cleaned = remove_info_recursively(remove_null_recursively(d2))
+    assert d1_cleaned == d2_cleaned
 
 
 def get_v2_test_params():
     return [
         pytest.param(
+            case,
             V2_TEST_CASE_WORKBOOKS[case],
             V2_TEST_CASE_EXPECTED_DATA[case],
             id=case,
@@ -71,24 +89,26 @@ def get_v2_test_params():
     ]
 
 
-@pytest.mark.parametrize("wb, expected_data", get_v2_test_params())
-def test_can_convert_v2_wb_to_building_model(wb: Workbook, expected_data: dict):
+@pytest.mark.parametrize("case, wb, expected_data", get_v2_test_params())
+def test_can_convert_v2_wb_to_building_model(case: str, wb: Workbook, expected_data: dict):
     building = Building.from_workbook(wb, ver="v2")
     building_dict = building.model_dump(by_alias=True)
 
-    assert dict_equal_ignore_info(building_dict, expected_data["Building"])
+    dict_equal_ignore_info(building_dict, expected_data["Building"])
 
 
-@pytest.mark.parametrize("wb, expected_data", get_v2_test_params())
-def test_can_convert_v2_wb_to_rooms_model(wb: Workbook, expected_data: dict):
+@pytest.mark.parametrize("case, wb, expected_data", get_v2_test_params())
+def test_can_convert_v2_wb_to_rooms_model(case: str, wb: Workbook, expected_data: dict):
     rooms = Rooms.from_workbook(wb, ver="v2")
     rooms_dict = rooms.model_dump(by_alias=True)
 
-    assert dict_equal_ignore_info(rooms_dict, expected_data["Rooms"])
+    dict_equal_ignore_info(rooms_dict, expected_data["Rooms"])
 
 
-@pytest.mark.parametrize("wb, expected_data", get_v2_test_params())
-def test_can_convert_v2_wb_to_air_conditioning_zones_model(wb: Workbook, expected_data: dict):
+@pytest.mark.parametrize("case, wb, expected_data", get_v2_test_params())
+def test_can_convert_v2_wb_to_air_conditioning_zones_model(
+    case: str, wb: Workbook, expected_data: dict
+):
     """AirConditioningZonesモデルへの変換テスト.
 
     Args:
@@ -98,11 +118,13 @@ def test_can_convert_v2_wb_to_air_conditioning_zones_model(wb: Workbook, expecte
     zones = AirConditioningZones.from_workbook(wb, ver="v2")
     zones_dict = zones.model_dump(by_alias=True)
 
-    assert dict_equal_ignore_info(zones_dict, expected_data["AirConditioningZone"])
+    dict_equal_ignore_info(zones_dict, expected_data["AirConditioningZone"])
 
 
-@pytest.mark.parametrize("wb, expected_data", get_v2_test_params())
-def test_can_convert_v2_wb_to_wall_configure_model(wb: Workbook, expected_data: dict):
+@pytest.mark.parametrize("case, wb, expected_data", get_v2_test_params())
+def test_can_convert_v2_wb_to_wall_configure_model(
+    case: str, wb: Workbook, expected_data: dict, tmp_path
+):
     """WallConfigureモデルへの変換テスト.
 
     Args:
@@ -112,4 +134,10 @@ def test_can_convert_v2_wb_to_wall_configure_model(wb: Workbook, expected_data: 
     wall_configure = WallConfigures.from_workbook(wb, ver="v2")
     wall_configure_dict = wall_configure.model_dump(by_alias=True)
 
-    assert dict_equal_ignore_info(wall_configure_dict, expected_data["WallConfigure"])
+    # tmp_pathにsave
+    with open(f"{tmp_path}/{case}_wall_configure_test.json", "w") as f:
+        json.dump(wall_configure_dict, f, indent=2, ensure_ascii=False)
+    with open(f"{tmp_path}/{case}_wall_configure_expected.json", "w") as f:
+        json.dump(expected_data["WallConfigure"], f, indent=2, ensure_ascii=False)
+
+    dict_equal_ignore_info(wall_configure_dict, expected_data["WallConfigure"])

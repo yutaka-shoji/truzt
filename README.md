@@ -50,7 +50,7 @@ if __name__ == "__main__":
 | `Building`                            | ✅  | ✅  | **0) 基本情報**                   |
 | `Rooms`                               | ✅  | ✅  | **1) 室仕様**                     |
 | `AirConditioningZone`                 | ✅  | ⬜  | **2-1) 空調ゾーン**               |
-| `WallConfigure`                       | ⬜  | ⬜  | **2-2) 外壁構成**                 |
+| `WallConfigure`                       | ✅  | ⬜  | **2-2) 外壁構成**                 |
 | `WindowConfigure`                     | ⬜  | ⬜  | **2-3) 窓仕様**                   |
 | `EnvelopeSet` / `ShadingConfigure`    | ⬜  | ⬜  | **2-4) 外皮**                     |
 | `HeatSourceSystem`                    | ⬜  | ⬜  | **2-5) 熱源**                     |
