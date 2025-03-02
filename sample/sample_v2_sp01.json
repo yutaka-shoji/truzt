@@ -2474,57 +2474,57 @@
       "layers": [
         {
           "materialID": "ロックウール化粧吸音板",
-          "conductivity": null,
           "thickness": 12.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "せっこうボード",
-          "conductivity": null,
           "thickness": 10.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "非密閉中空層",
-          "conductivity": null,
           "thickness": null,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "コンクリート",
-          "conductivity": null,
           "thickness": 150.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "セメント・モルタル",
-          "conductivity": null,
           "thickness": 15.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "アスファルト類",
-          "conductivity": null,
           "thickness": 5.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "セメント・モルタル",
-          "conductivity": null,
           "thickness": 15.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "押出法ポリスチレンフォーム　保温板　1種",
-          "conductivity": null,
           "thickness": 50.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "コンクリート",
-          "conductivity": null,
           "thickness": 60.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         }
       ]
     },
@@ -2536,39 +2536,39 @@
       "layers": [
         {
           "materialID": "せっこうボード",
-          "conductivity": null,
           "thickness": 8.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "非密閉中空層",
-          "conductivity": null,
           "thickness": null,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "押出法ポリスチレンフォーム　保温板　1種",
-          "conductivity": null,
           "thickness": 25.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "コンクリート",
-          "conductivity": null,
           "thickness": 150.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "セメント・モルタル",
-          "conductivity": null,
           "thickness": 25.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "タイル",
-          "conductivity": null,
           "thickness": 10.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         }
       ]
     },
@@ -2580,27 +2580,27 @@
       "layers": [
         {
           "materialID": "ビニル系床材",
-          "conductivity": null,
           "thickness": 3.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "セメント・モルタル",
-          "conductivity": null,
           "thickness": 27.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "コンクリート",
-          "conductivity": null,
           "thickness": 150.0,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         },
         {
           "materialID": "土壌",
-          "conductivity": null,
           "thickness": null,
-          "Info": null
+          "Info": null,
+          "conductivity": null
         }
       ]
     }
@@ -2610,9 +2610,11 @@
       "windowArea": 1,
       "windowWidth": null,
       "windowHeight": null,
-      "inputMethod": "ガラスの種類を入力",
-      "frameType": "金属木複合製",
-      "glassID": "T",
+      "inputMethod": "ガラスの性能を入力",
+      "frameType": "樹脂製",
+      "layerType": "複層",
+      "glassUvalue": 1.0,
+      "glassIvalue": 1.0,
       "Info": null
     }
   },
@@ -4063,7 +4065,7 @@
       "VentilationUnitRef": {
         "EF-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4072,7 +4074,7 @@
       "VentilationUnitRef": {
         "EF-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4081,7 +4083,7 @@
       "VentilationUnitRef": {
         "EF-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4090,7 +4092,7 @@
       "VentilationUnitRef": {
         "EF-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4099,7 +4101,7 @@
       "VentilationUnitRef": {
         "EF-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4108,11 +4110,11 @@
       "VentilationUnitRef": {
         "EF-6": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         },
         "SF-6": {
           "UnitType": "給気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4121,7 +4123,7 @@
       "VentilationUnitRef": {
         "EF-7": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4130,11 +4132,11 @@
       "VentilationUnitRef": {
         "EF-8": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         },
         "SF-8": {
           "UnitType": "給気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4143,7 +4145,7 @@
       "VentilationUnitRef": {
         "EF-2-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4152,7 +4154,7 @@
       "VentilationUnitRef": {
         "EF-2-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4161,7 +4163,7 @@
       "VentilationUnitRef": {
         "EF-2-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4170,7 +4172,7 @@
       "VentilationUnitRef": {
         "EF-2-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4179,7 +4181,7 @@
       "VentilationUnitRef": {
         "EF-2-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4188,7 +4190,7 @@
       "VentilationUnitRef": {
         "EF-3-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4197,7 +4199,7 @@
       "VentilationUnitRef": {
         "EF-3-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4206,7 +4208,7 @@
       "VentilationUnitRef": {
         "EF-3-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4215,7 +4217,7 @@
       "VentilationUnitRef": {
         "EF-3-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4224,7 +4226,7 @@
       "VentilationUnitRef": {
         "EF-3-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4233,7 +4235,7 @@
       "VentilationUnitRef": {
         "EF-4-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4242,7 +4244,7 @@
       "VentilationUnitRef": {
         "EF-4-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4251,7 +4253,7 @@
       "VentilationUnitRef": {
         "EF-4-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4260,7 +4262,7 @@
       "VentilationUnitRef": {
         "EF-4-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4269,7 +4271,7 @@
       "VentilationUnitRef": {
         "EF-4-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4278,7 +4280,7 @@
       "VentilationUnitRef": {
         "EF-5-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4287,7 +4289,7 @@
       "VentilationUnitRef": {
         "EF-5-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4296,7 +4298,7 @@
       "VentilationUnitRef": {
         "EF-5-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4305,7 +4307,7 @@
       "VentilationUnitRef": {
         "EF-5-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4314,7 +4316,7 @@
       "VentilationUnitRef": {
         "EF-5-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4323,7 +4325,7 @@
       "VentilationUnitRef": {
         "EF-6-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4332,7 +4334,7 @@
       "VentilationUnitRef": {
         "EF-6-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4341,7 +4343,7 @@
       "VentilationUnitRef": {
         "EF-6-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4350,7 +4352,7 @@
       "VentilationUnitRef": {
         "EF-6-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4359,7 +4361,7 @@
       "VentilationUnitRef": {
         "EF-6-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4368,7 +4370,7 @@
       "VentilationUnitRef": {
         "EF-7-1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4377,7 +4379,7 @@
       "VentilationUnitRef": {
         "EF-7-2": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4386,7 +4388,7 @@
       "VentilationUnitRef": {
         "EF-7-3": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4395,7 +4397,7 @@
       "VentilationUnitRef": {
         "EF-7-4": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4404,7 +4406,7 @@
       "VentilationUnitRef": {
         "EF-7-5": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         }
       }
     },
@@ -4413,15 +4415,15 @@
       "VentilationUnitRef": {
         "PAC1": {
           "UnitType": "空調",
-          "Info": ""
+          "Info": null
         },
         "PAC1_fan1": {
           "UnitType": "排気",
-          "Info": ""
+          "Info": null
         },
         "PAC1_fan2": {
           "UnitType": "給気",
-          "Info": ""
+          "Info": null
         }
       }
     }
@@ -4995,11 +4997,11 @@
       "HighEfficiencyMotor": "無",
       "Inverter": "無",
       "AirVolumeControl": "無",
+      "Info": "無",
       "VentilationRoomType": "エレベータ機械室",
       "AC_CoolingCapacity": 4.5,
       "AC_RefEfficiency": 1.25,
-      "AC_PumpPower": 0.0,
-      "Info": "無"
+      "AC_PumpPower": 0.0
     },
     "PAC1_fan1": {
       "Number": 1,
@@ -5009,11 +5011,11 @@
       "HighEfficiencyMotor": "有",
       "Inverter": "有",
       "AirVolumeControl": "温度制御",
+      "Info": "無",
       "VentilationRoomType": null,
       "AC_CoolingCapacity": null,
       "AC_RefEfficiency": null,
-      "AC_PumpPower": null,
-      "Info": "無"
+      "AC_PumpPower": null
     },
     "PAC1_fan2": {
       "Number": 1,
@@ -5023,11 +5025,11 @@
       "HighEfficiencyMotor": "有",
       "Inverter": "有",
       "AirVolumeControl": "温度制御",
+      "Info": "無",
       "VentilationRoomType": null,
       "AC_CoolingCapacity": null,
       "AC_RefEfficiency": null,
-      "AC_PumpPower": null,
-      "Info": "無"
+      "AC_PumpPower": null
     }
   },
   "LightingSystems": {
