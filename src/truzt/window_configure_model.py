@@ -8,6 +8,7 @@ Classes:
 from typing import Literal, Optional
 
 from openpyxl import Workbook
+from openpyxl.worksheet.worksheet import Worksheet
 from pydantic import ConfigDict, Field, RootModel
 from pydantic.alias_generators import to_camel
 
@@ -106,31 +107,182 @@ class WindowConfigures(RootModel):
 
     root: dict[str, WindowConfigure]
 
+    @classmethod
+    def _create_window_data_by_performance(
+        cls, ws: Worksheet, row: int, ref: dict, raw_frame_type: Optional[str] = None
+    ) -> Optional[dict]:
+        """性能値による窓データの生成.
+
+        Args:
+            ws: ワークシート
+            row: 行番号
+            ref: セル参照定義
+            raw_frame_type: 建具種類の生の値
+
+        Returns:
+            生成した窓データ
+        """
+        u_value = ws[f"{ref['u_value']}{row}"].value
+        i_value = ws[f"{ref['i_value']}{row}"].value
+        glass_u = ws[f"{ref['glass_u']}{row}"].value
+        glass_i = ws[f"{ref['glass_i']}{row}"].value
+
+        if not (u_value and i_value):
+            return None
+
+        return {
+            "input_method": "性能値を入力",
+            "window_uvalue": float(u_value),
+            "window_ivalue": float(i_value),
+            "layer_type": "単層",
+            "glass_uvalue": float(glass_u) if glass_u else None,
+            "glass_ivalue": float(glass_i) if glass_i else None,
+        }
+
+    @classmethod
+    def _create_window_data_by_glass_performance(
+        cls, ws: Worksheet, row: int, ref: dict, raw_frame_type: Optional[str] = None
+    ) -> Optional[dict]:
+        """ガラス性能による窓データの生成.
+
+        Args:
+            ws: ワークシート
+            row: 行番号
+            ref: セル参照定義
+            raw_frame_type: 建具種類の生の値
+
+        Returns:
+            生成した窓データ
+        """
+        glass_u = ws[f"{ref['glass_u']}{row}"].value
+        glass_i = ws[f"{ref['glass_i']}{row}"].value
+
+        if not (glass_u and glass_i):
+            return None
+
+        window_data = {
+            "input_method": "ガラスの性能を入力",
+            "glass_uvalue": float(glass_u),
+            "glass_ivalue": float(glass_i),
+        }
+
+        if raw_frame_type:
+            frame_info = cls._convert_frame_type(raw_frame_type)
+            if frame_info:
+                frame_type, layer_type = frame_info
+                window_data["frame_type"] = frame_type
+                window_data["layer_type"] = layer_type
+
+        return window_data
+
+    @classmethod
+    def _create_window_data_by_glass_type(
+        cls, ws: Worksheet, row: int, ref: dict, raw_frame_type: Optional[str] = None
+    ) -> Optional[dict]:
+        """ガラス種類による窓データの生成.
+
+        Args:
+            ws: ワークシート
+            row: 行番号
+            ref: セル参照定義
+            raw_frame_type: 建具種類の生の値
+
+        Returns:
+            生成した窓データ
+        """
+        glass_type = ws[f"{ref['glass_type']}{row}"].value
+        if not glass_type:
+            return None
+
+        window_data = {
+            "input_method": "ガラスの種類を入力",
+            "glass_id": glass_type,
+        }
+
+        if raw_frame_type:
+            frame_info = cls._convert_frame_type(raw_frame_type)
+            if frame_info:
+                frame_type, _ = frame_info
+                window_data["frame_type"] = frame_type
+
+        return window_data
+
     @staticmethod
-    def _convert_frame_type(frame_type: str) -> Optional[str]:
+    def _convert_frame_type(frame_type: str) -> Optional[tuple[str, str]]:
         """建具の種類を変換する.
 
         Args:
             frame_type: エクセルファイルの建具種類
 
         Returns:
-            変換後の建具種類
+            変換後の建具種類とガラス層数のタプル、または None
         """
         if not frame_type:
             return None
 
-        # 括弧を含む場合は、括弧前の部分を取得
-        frame_type = frame_type.split("(")[0]
-
-        # 変換マップ
-        conversion = {
-            "樹脂アルミ複合": "金属樹脂複合製",
-            "アルミ樹脂複合": "金属樹脂複合製",
-            "木アルミ複合": "金属木複合製",
-            "アルミ木複合": "金属木複合製",
-            "金属": "金属製",
+        frame_type_mapping = {
+            "木製(単板ガラス)": ("木製", "単層"),
+            "木製(複層ガラス)": ("木製", "複層"),
+            "樹脂製(単板ガラス)": ("樹脂製", "単層"),
+            "樹脂製(複層ガラス)": ("樹脂製", "複層"),
+            "樹脂": ("樹脂製", "複層"),
+            "金属木複合製(単板ガラス)": ("金属木複合製", "単層"),
+            "金属木複合製(複層ガラス)": ("金属木複合製", "複層"),
+            "金属樹脂複合製(単板ガラス)": ("金属樹脂複合製", "単層"),
+            "金属樹脂複合製(複層ガラス)": ("金属樹脂複合製", "複層"),
+            "アルミ樹脂複合": ("金属樹脂複合製", "複層"),
+            "金属製(単板ガラス)": ("金属製", "単層"),
+            "金属製(複層ガラス)": ("金属製", "複層"),
+            "アルミ": ("金属製", "複層"),
         }
-        return conversion.get(frame_type, frame_type)
+
+        return frame_type_mapping.get(frame_type)
+
+    @classmethod
+    def _process_row(cls, ws: Worksheet, row: int, ref: dict) -> Optional[tuple[str, dict]]:
+        """行データを処理する.
+
+        Args:
+            ws: ワークシート
+            row: 行番号
+            ref: セル参照定義
+
+        Returns:
+            キーとWindowConfigureデータのタプル、または None
+        """
+        # 開口部名称の取得
+        key = ws[f"{ref['name']}{row}"].value
+        if not key:
+            return None
+
+        # 基本データの作成
+        window_data = {
+            "window_area": 1,
+            "window_width": None,
+            "window_height": None,
+        }
+
+        # 建具種類の取得
+        raw_frame_type = ws[f"{ref['frame_type']}{row}"].value
+
+        # データ生成の試行
+        additional_data = (
+            cls._create_window_data_by_performance(ws, row, ref, raw_frame_type)
+            or cls._create_window_data_by_glass_performance(ws, row, ref, raw_frame_type)
+            or cls._create_window_data_by_glass_type(ws, row, ref, raw_frame_type)
+        )
+
+        if not additional_data:
+            return None
+
+        window_data.update(additional_data)
+
+        # 備考の追加
+        info = ws[f"{ref['info']}{row}"].value
+        if info:
+            window_data["info"] = info
+
+        return key, window_data
 
     @classmethod
     def from_workbook(cls, wb: Workbook, ver: Literal["v2", "v3"] = "v3") -> "WindowConfigures":
@@ -170,73 +322,21 @@ class WindowConfigures(RootModel):
         # 行のループ
         empty_count = 0
         for row in range(ref["start_row"], ws.max_row + 1):
-            # 開口部名称の取得
-            key = ws[f"{ref['name']}{row}"].value
-
             # 連続して空欄が続いた場合はループを抜ける
             if empty_count > 20:
                 break
 
-            # 開口部名称が空欄の場合はスキップ
-            if not key:
+            # 行の処理
+            result = cls._process_row(ws, row, ref)
+            if not result:
                 empty_count += 1
                 continue
+
+            key, window_data = result
 
             # 既に同じ名称が存在する場合はスキップ
             if key in window_configures:
                 continue
-
-            # 基本データの作成
-            window_data = {
-                "window_area": 1,
-                "window_width": None,
-                "window_height": None,
-            }
-
-            # 入力方法の判定と各種データの取得
-            u_value = ws[f"{ref['u_value']}{row}"].value
-            i_value = ws[f"{ref['i_value']}{row}"].value
-            glass_u = ws[f"{ref['glass_u']}{row}"].value
-            glass_i = ws[f"{ref['glass_i']}{row}"].value
-            glass_type = ws[f"{ref['glass_type']}{row}"].value
-
-            if u_value and i_value:
-                window_data.update(
-                    {
-                        "input_method": "性能値を入力",
-                        "window_uvalue": float(u_value),
-                        "window_ivalue": float(i_value),
-                        "layer_type": "単層",
-                        "glass_uvalue": float(glass_u) if glass_u else None,
-                        "glass_ivalue": float(glass_i) if glass_i else None,
-                    }
-                )
-            elif glass_u and glass_i:
-                raw_frame_type = ws[f"{ref['frame_type']}{row}"].value
-                window_data["input_method"] = "ガラスの性能を入力"
-                if raw_frame_type:
-                    frame_type = cls._convert_frame_type(raw_frame_type)
-                    if frame_type:
-                        window_data["frame_type"] = frame_type
-                window_data.update(
-                    {
-                        "glass_uvalue": float(glass_u),
-                        "glass_ivalue": float(glass_i),
-                    }
-                )
-            elif glass_type:
-                raw_frame_type = ws[f"{ref['frame_type']}{row}"].value
-                window_data["input_method"] = "ガラスの種類を入力"
-                if raw_frame_type:
-                    frame_type = cls._convert_frame_type(raw_frame_type)
-                    if frame_type:
-                        window_data["frame_type"] = frame_type
-                window_data["glass_id"] = glass_type
-
-            # 備考の追加
-            info = ws[f"{ref['info']}{row}"].value
-            if info:
-                window_data["info"] = info
 
             # WindowConfigureモデルの作成と追加
             window_configures[key] = WindowConfigure(**window_data)
