@@ -7,6 +7,7 @@ from truzt.air_conditioning_zone_model import AirConditioningZones
 from truzt.building_model import Building
 from truzt.room_model import Rooms
 from truzt.wall_configure_model import WallConfigures
+from truzt.window_configure_model import WindowConfigures
 
 V2_TEST_CASES = [
     "sample_v2",
@@ -141,3 +142,25 @@ def test_can_convert_v2_wb_to_wall_configure_model(
         json.dump(expected_data["WallConfigure"], f, indent=2, ensure_ascii=False)
 
     dict_equal_ignore_info(wall_configure_dict, expected_data["WallConfigure"])
+
+
+@pytest.mark.parametrize("case, wb, expected_data", get_v2_test_params())
+def test_can_convert_v2_wb_to_window_configure_model(
+    case: str, wb: Workbook, expected_data: dict, tmp_path
+):
+    """WindowConfigureモデルへの変換テスト.
+
+    Args:
+        wb: テスト用のワークブック
+        expected_data: 期待されるデータ（JSON）
+    """
+    window_configure = WindowConfigures.from_workbook(wb, ver="v2")
+    window_configure_dict = window_configure.model_dump(by_alias=True)
+
+    # tmp_pathにsave
+    with open(f"{tmp_path}/{case}_window_configure_test.json", "w") as f:
+        json.dump(window_configure_dict, f, indent=2, ensure_ascii=False)
+    with open(f"{tmp_path}/{case}_window_configure_expected.json", "w") as f:
+        json.dump(expected_data["WindowConfigure"], f, indent=2, ensure_ascii=False)
+
+    dict_equal_ignore_info(window_configure_dict, expected_data["WindowConfigure"])
