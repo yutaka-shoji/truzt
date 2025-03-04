@@ -74,4 +74,97 @@ class ShadingConfigures(RootModel):
         Returns:
             dict[str, ShadingConfigures]: ShadingConfigure dict
         """
-        raise NotImplementedError
+        if ver == "v2":
+            return cls._from_workbook_v2(wb)
+        else:
+            # TODO: v3のセル参照定義
+            raise NotImplementedError("v3 is not implemented yet")
+
+    @classmethod
+    def _from_workbook_v2(cls, wb: Workbook) -> "ShadingConfigures":
+        """WorkbookからShadingConfiguresモデルを生成する (v2).
+
+        Args:
+            wb: Workbook
+
+        Returns:
+            ShadingConfigures: ShadingConfigure dict
+        """
+        # シート名と開始行の定義
+        sheet_name = "2-4) 外皮 "
+        start_row = 11  # DATA_START_ROW + 1 (0-indexedから1-indexedへの変換)
+
+        # シートの取得
+        try:
+            ws = wb[sheet_name]
+        except KeyError:
+            # シートが存在しない場合は空のデータを返す
+            return cls(root={})
+
+        # データ格納用の辞書
+        shading_configures: dict[str, ShadingConfigure] = {}
+
+        # 庇の番号
+        eaves_num = 0
+
+        # 行のループ
+        empty_count = 0
+        for row in range(start_row, ws.max_row + 1):
+            # 連続して空欄が続いた場合はループを抜ける
+            if empty_count > 20:
+                break
+
+            # セルの値を取得
+            shade_c_cell = ws.cell(row=row, column=4)  # 日よけ効果係数（冷房）
+            shade_h_cell = ws.cell(row=row, column=5)  # 日よけ効果係数（暖房）
+
+            # セルの値を安全に取得
+            shade_c = shade_c_cell.value
+            shade_h = shade_h_cell.value
+
+            # 日よけ効果係数の処理
+            if shade_c and shade_h:
+                # 庇IDの生成
+                eaves_id = f"庇{eaves_num}"
+                eaves_num += 1
+
+                # 型変換を安全に行う
+                try:
+                    # 文字列に変換してから浮動小数点に変換
+                    shade_c_str = str(shade_c) if shade_c is not None else ""
+                    shade_h_str = str(shade_h) if shade_h is not None else ""
+
+                    shade_c_float = float(shade_c_str) if shade_c_str else None
+                    shade_h_float = float(shade_h_str) if shade_h_str else None
+                except (ValueError, TypeError):
+                    # 変換できない場合はスキップ
+                    empty_count += 1
+                    continue
+
+                # 日よけデータの作成
+                shading_data = {
+                    "shading_effect_c": shade_c_float,
+                    "shading_effect_h": shade_h_float,
+                    "x1": None,
+                    "x2": None,
+                    "x3": None,
+                    "y1": None,
+                    "y2": None,
+                    "y3": None,
+                    "zx_plus": None,
+                    "zx_minus": None,
+                    "zy_plus": None,
+                    "zy_minus": None,
+                    "info": None,
+                }
+
+                # ShadingConfigureモデルの作成と追加
+                shading_configures[eaves_id] = ShadingConfigure(**shading_data)
+            else:
+                empty_count += 1
+                continue
+
+            # 空行カウンタをリセット
+            empty_count = 0
+
+        return cls(root=shading_configures)

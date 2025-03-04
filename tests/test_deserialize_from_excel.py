@@ -5,7 +5,9 @@ from openpyxl import Workbook, load_workbook
 
 from truzt.air_conditioning_zone_model import AirConditioningZones
 from truzt.building_model import Building
+from truzt.envelope_set_model import EnvelopeSets
 from truzt.room_model import Rooms
+from truzt.shading_configure_model import ShadingConfigures
 from truzt.wall_configure_model import WallConfigures
 from truzt.window_configure_model import WindowConfigures
 
@@ -58,6 +60,29 @@ def remove_null_recursively(data):
         return {k: remove_null_recursively(v) for k, v in data.items() if v is not None}
     elif isinstance(data, (list, tuple)):
         return [remove_null_recursively(v) for v in data if v is not None]
+    else:
+        return data
+
+
+def change_ground_wall_type(data: dict) -> dict:
+    """WallTypeの値が 地盤に接する外壁 ならば 日の当たらない外壁 に変更する.
+    単体テスト対応
+
+    Args:
+        data: 処理対象のデータ
+
+    Returns:
+        変更後のデータ
+    """
+    if isinstance(data, dict):
+        return {
+            k: change_ground_wall_type(v)
+            if k != "WallType" or v != "地盤に接する外壁"
+            else "日の当たらない外壁"
+            for k, v in data.items()
+        }
+    elif isinstance(data, (list, tuple)):
+        return [change_ground_wall_type(v) for v in data]
     else:
         return data
 
@@ -164,3 +189,49 @@ def test_can_convert_v2_wb_to_window_configure_model(
         json.dump(expected_data["WindowConfigure"], f, indent=2, ensure_ascii=False)
 
     dict_equal_ignore_info(window_configure_dict, expected_data["WindowConfigure"])
+
+
+@pytest.mark.parametrize("case, wb, expected_data", get_v2_test_params())
+def test_can_convert_v2_wb_to_envelope_set_model(
+    case: str, wb: Workbook, expected_data: dict, tmp_path
+):
+    """EnvelopeSetモデルへの変換テスト.
+
+    Args:
+        wb: テスト用のワークブック
+        expected_data: 期待されるデータ（JSON）
+    """
+    expected_data = change_ground_wall_type(expected_data)
+
+    envelope_sets = EnvelopeSets.from_workbook(wb, ver="v2")
+    envelope_sets_dict = envelope_sets.model_dump(by_alias=True)
+
+    # tmp_pathにsave
+    with open(f"{tmp_path}/{case}_envelope_set_test.json", "w") as f:
+        json.dump(envelope_sets_dict, f, indent=2, ensure_ascii=False)
+    with open(f"{tmp_path}/{case}_envelope_set_expected.json", "w") as f:
+        json.dump(expected_data["EnvelopeSet"], f, indent=2, ensure_ascii=False)
+
+    dict_equal_ignore_info(envelope_sets_dict, expected_data["EnvelopeSet"])
+
+
+@pytest.mark.parametrize("case, wb, expected_data", get_v2_test_params())
+def test_can_convert_v2_wb_to_shading_configure_model(
+    case: str, wb: Workbook, expected_data: dict, tmp_path
+):
+    """ShadingConfigureモデルへの変換テスト.
+
+    Args:
+        wb: テスト用のワークブック
+        expected_data: 期待されるデータ（JSON）
+    """
+    shading_configures = ShadingConfigures.from_workbook(wb, ver="v2")
+    shading_configures_dict = shading_configures.model_dump(by_alias=True)
+
+    # tmp_pathにsave
+    with open(f"{tmp_path}/{case}_shading_configure_test.json", "w") as f:
+        json.dump(shading_configures_dict, f, indent=2, ensure_ascii=False)
+    with open(f"{tmp_path}/{case}_shading_configure_expected.json", "w") as f:
+        json.dump(expected_data["ShadingConfigure"], f, indent=2, ensure_ascii=False)
+
+    dict_equal_ignore_info(shading_configures_dict, expected_data["ShadingConfigure"])
