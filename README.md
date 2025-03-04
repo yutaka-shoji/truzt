@@ -52,7 +52,7 @@ if __name__ == "__main__":
 | `AirConditioningZone`                 | ✅  | ⬜  | **2-1) 空調ゾーン**               |
 | `WallConfigure`                       | ✅  | ⬜  | **2-2) 外壁構成**                 |
 | `WindowConfigure`                     | ✅  | ⬜  | **2-3) 窓仕様**                   |
-| `EnvelopeSet` / `ShadingConfigure`    | ⬜  | ⬜  | **2-4) 外皮**                     |
+| `EnvelopeSet` / `ShadingConfigure`    | ✅  | ⬜  | **2-4) 外皮**                     |
 | `HeatSourceSystem`                    | ⬜  | ⬜  | **2-5) 熱源**                     |
 | `SecondaryPumpSystem`                 | ⬜  | ⬜  | **2-6) 2 次ﾎﾟﾝﾌﾟ**                |
 | `AirHandlingSystem`                   | ⬜  | ⬜  | **2-7) 空調機**                   |

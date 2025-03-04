@@ -1,6 +1,6 @@
 [project]
 name = "truzt"
-version = "0.0.5-alpha"
+version = "0.0.6-alpha"
 description = "truzt --Building Data Model--"
 authors = [{ name = "Shoji, Yutaka", email = "ytk.shoji@gmail.com" }]
 dependencies = ["pydantic>=2.8.2", "openpyxl>=3.1.5"]
