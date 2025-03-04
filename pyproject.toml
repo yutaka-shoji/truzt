@@ -70,4 +70,3 @@ docstring-code-format = true
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
-ignore = ["builelib/**", ".clinerules"]
